@@ -28,11 +28,11 @@ package com.github.pavelkisliuk.model.data;
 /**
  * The {@code Stone} class represent abstract stone
  * <p>
- * * This class contain fields describing stone and methods for
- * * setting and getting values of it's fields.
- * *
- * * @author Kisliuk Pavel Sergeevich
- * * @since 12.0
+ * This class contain fields describing stone and methods for
+ * setting and getting values of it's fields.
+ *
+ * @author Kisliuk Pavel Sergeevich
+ * @since 12.0
  */
 public class Stone {
 	/**
@@ -74,7 +74,7 @@ public class Stone {
 	}
 
 	/**
-	 * @return {@code name} of name {@code Stone}
+	 * @return {@code name} of {@code Stone}
 	 */
 	public String getName() {
 		return name;
@@ -88,7 +88,7 @@ public class Stone {
 	}
 
 	/**
-	 * @return {@code id} of id {@code Stone}
+	 * @return {@code id} of {@code Stone}
 	 */
 	public int getId() {
 		return id;
@@ -102,7 +102,7 @@ public class Stone {
 	}
 
 	/**
-	 * @return {@code ctWeight} of ctWeight {@code Stone}
+	 * @return {@code ctWeight} of {@code Stone}
 	 */
 	public double getCtWeight() {
 		return ctWeight;
@@ -116,7 +116,7 @@ public class Stone {
 	}
 
 	/**
-	 * @return {@code costD} of costD {@code Stone}
+	 * @return {@code costD} of {@code Stone}
 	 */
 	public double getCostD() {
 		return costD;
