@@ -69,10 +69,12 @@ public class Canvas {
 	 * @param canvas is object we copy
 	 */
 	public Canvas(Canvas canvas) {
-		this.id = canvas.id;
-		this.grWeight = canvas.grWeight;
-		this.costD = canvas.costD;
-		this.metal = canvas.metal;
+		if(canvas != null) {
+			this.id = canvas.id;
+			this.grWeight = canvas.grWeight;
+			this.costD = canvas.costD;
+			this.metal = canvas.metal;
+		}
 	}
 
 	/**

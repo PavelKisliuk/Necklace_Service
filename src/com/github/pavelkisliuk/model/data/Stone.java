@@ -67,10 +67,12 @@ public class Stone {
 	 * @param stone is object we copy
 	 */
 	public Stone(Stone stone) {
-		this.name = stone.name;
-		this.id = stone.id;
-		this.ctWeight = stone.ctWeight;
-		this.costD = stone.costD;
+		if(stone != null) {
+			this.name = stone.name;
+			this.id = stone.id;
+			this.ctWeight = stone.ctWeight;
+			this.costD = stone.costD;
+		}
 	}
 
 	/**

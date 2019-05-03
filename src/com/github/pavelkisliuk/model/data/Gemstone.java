@@ -70,9 +70,11 @@ public class Gemstone extends Stone {
 	 */
 	public Gemstone(Gemstone gemstone) {
 		super(gemstone);
-		this.curiosityLevel = gemstone.curiosityLevel;
-		this.hardnessLevel = gemstone.hardnessLevel;
-		this.opacity = gemstone.opacity;
+		if(gemstone != null) {
+			this.curiosityLevel = gemstone.curiosityLevel;
+			this.hardnessLevel = gemstone.hardnessLevel;
+			this.opacity = gemstone.opacity;
+		}
 	}
 
 	/**
