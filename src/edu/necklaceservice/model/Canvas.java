@@ -84,14 +84,14 @@ public class Canvas {
 	/**
 	 * @return {@code id} of {@code Canvas}
 	 */
-	public String getId() {
+	public String getIdCanvas() {
 		return idCanvas;
 	}
 
 	/**
 	 * @param id set {@code id} of {@code Canvas}
 	 */
-	public void setId(String id) {
+	public void setIdCanvas(String id) {
 		this.idCanvas = id;
 	}
 

@@ -77,14 +77,14 @@ public class Necklace {
 	/**
 	 * @return {@code id} of {@code Necklace}
 	 */
-	public String getId() {
+	public String getIdNecklace() {
 		return idNecklace;
 	}
 
 	/**
 	 * @param id set {@code id} of {@code Necklace}
 	 */
-	public void setId(String id) {
+	public void setIdNecklace(String id) {
 		this.idNecklace = id;
 	}
 
