@@ -23,7 +23,7 @@
  *
  */
 
-package com.github.pavelkisliuk.model.data;
+package edu.necklaceservice.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,7 @@ public class Necklace {
 	/**
 	 * ID of {@code Necklace}
 	 */
-	private int id;
+	private String idNecklace;
 
 	/**
 	 * List of {@code NecklaceElement} class-wrapper for storing particular elements of
@@ -68,7 +68,7 @@ public class Necklace {
 	 */
 	public Necklace(Necklace necklace) {
 		if(necklace != null) {
-			this.id = necklace.id;
+			this.idNecklace = necklace.idNecklace;
 			this.necklaceElementsList = new ArrayList<>(necklace.necklaceElementsList);
 			this.costD = necklace.costD;
 		}
@@ -77,15 +77,15 @@ public class Necklace {
 	/**
 	 * @return {@code id} of {@code Necklace}
 	 */
-	public int getId() {
-		return id;
+	public String getId() {
+		return idNecklace;
 	}
 
 	/**
 	 * @param id set {@code id} of {@code Necklace}
 	 */
-	public void setId(int id) {
-		this.id = id;
+	public void setId(String id) {
+		this.idNecklace = id;
 	}
 
 	/**
@@ -113,6 +113,42 @@ public class Necklace {
 	 * @param costD set {@code id} of {@code Necklace}
 	 */
 	public void setCostD(double costD) {
+		if(costD < 0) {
+			throw new IllegalArgumentException("New costD value < 0");
+		}
 		this.costD = costD;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Necklace necklace = (Necklace) o;
+
+		if (Double.compare(necklace.costD, costD) != 0) return false;
+		if (!idNecklace.equals(necklace.idNecklace)) return false;
+		return necklaceElementsList.equals(necklace.necklaceElementsList);
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result;
+		long temp;
+		result = idNecklace.hashCode();
+		result = 31 * result + necklaceElementsList.hashCode();
+		temp = Double.doubleToLongBits(costD);
+		result = 31 * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public String toString() {
+		return "Necklace{" +
+				"idNecklace='" + idNecklace + '\'' +
+				", necklaceElementsList=" + necklaceElementsList +
+				", costD=" + costD +
+				'}';
 	}
 }

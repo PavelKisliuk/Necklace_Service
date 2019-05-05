@@ -23,7 +23,7 @@
  *
  */
 
-package com.github.pavelkisliuk.model.data;
+package edu.necklaceservice.model;
 
 /**
  * The {@code Gemstone} class extend's {@code Stone} class and represent
@@ -36,8 +36,24 @@ package com.github.pavelkisliuk.model.data;
  * @since 12.0
  */
 public class Gemstone extends Stone {
+	/**
+	 * Level of opacity means that {@code Gemstone} ultimate transparent
+	 */
+	public static final double MIN_OPACITY = 0.0;
+
+	/**
+	 * Level of opacity means that {@code Gemstone} ultimate opaque
+	 */
+	public static final double MAX_OPACITY = 1.0;
+
+	/**
+	 * Level of curiosity (rarity in nature) of {@code Gemstone}
+	 */
 	enum CuriosityLevel {VERY_LOW, LOW, MEDIUM, HARD, VERY_HARD}
 
+	/**
+	 * Level of hardness (strength to defeat) of {@code Gemstone}
+	 */
 	enum HardnessLevel {HARD, SPARSE, SOFT}
 
 	/**
@@ -70,11 +86,9 @@ public class Gemstone extends Stone {
 	 */
 	public Gemstone(Gemstone gemstone) {
 		super(gemstone);
-		if(gemstone != null) {
-			this.curiosityLevel = gemstone.curiosityLevel;
-			this.hardnessLevel = gemstone.hardnessLevel;
-			this.opacity = gemstone.opacity;
-		}
+		this.curiosityLevel = gemstone.curiosityLevel;
+		this.hardnessLevel = gemstone.hardnessLevel;
+		this.opacity = gemstone.opacity;
 	}
 
 	/**
@@ -116,6 +130,9 @@ public class Gemstone extends Stone {
 	 * @param opacity set {@code opacity} of {@code Gemstone}
 	 */
 	public void setOpacity(double opacity) {
+		if((opacity < MIN_OPACITY) || (opacity > MAX_OPACITY)) {
+			throw new IllegalArgumentException("Incorrect opacity value in Gemstone");
+		}
 		this.opacity = opacity;
 	}
 

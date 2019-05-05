@@ -23,7 +23,7 @@
  *
  */
 
-package com.github.pavelkisliuk.model.data;
+package edu.necklaceservice.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,10 +62,11 @@ public class NecklaceElement {
 	 * @param necklaceElement is object we copy
 	 */
 	public NecklaceElement(NecklaceElement necklaceElement) {
-		if (necklaceElement != null) {
-			this.canvas = necklaceElement.canvas;
-			this.stonesGroup = new ArrayList<>(necklaceElement.stonesGroup);
+		if (necklaceElement == null) {
+			throw new NullPointerException("Null pointer in NecklaceElement copy constructor");
 		}
+		this.canvas = necklaceElement.canvas;
+		this.stonesGroup = new ArrayList<>(necklaceElement.stonesGroup);
 	}
 
 	/**

@@ -23,7 +23,7 @@
  *
  */
 
-package com.github.pavelkisliuk.model.data;
+package edu.necklaceservice.model;
 
 /**
  * The {@code Canvas} class represent place where are situated {@code Stone}
@@ -35,12 +35,15 @@ package com.github.pavelkisliuk.model.data;
  * @since 12.0
  */
 public class Canvas {
+	/**
+	 * Latin name of metal of {@code Canvas}
+	 */
 	enum Metal {AURUM, ALBUM_AURUM, ARGENTUM, PLATINUM, AERIS}
 
 	/**
 	 * ID of {@code Canvas}
 	 */
-	private int id;
+	private String idCanvas;
 
 	/**
 	 * Weight of {@code Canvas} in grams
@@ -69,26 +72,27 @@ public class Canvas {
 	 * @param canvas is object we copy
 	 */
 	public Canvas(Canvas canvas) {
-		if(canvas != null) {
-			this.id = canvas.id;
-			this.grWeight = canvas.grWeight;
-			this.costD = canvas.costD;
-			this.metal = canvas.metal;
+		if (canvas == null) {
+			throw new NullPointerException("Null pointer in Canvas copy constructor");
 		}
+		this.idCanvas = canvas.idCanvas;
+		this.grWeight = canvas.grWeight;
+		this.costD = canvas.costD;
+		this.metal = canvas.metal;
 	}
 
 	/**
 	 * @return {@code id} of {@code Canvas}
 	 */
-	public int getId() {
-		return id;
+	public String getId() {
+		return idCanvas;
 	}
 
 	/**
 	 * @param id set {@code id} of {@code Canvas}
 	 */
-	public void setId(int id) {
-		this.id = id;
+	public void setId(String id) {
+		this.idCanvas = id;
 	}
 
 	/**
@@ -102,6 +106,9 @@ public class Canvas {
 	 * @param grWeight set {@code grWeight} of {@code Canvas}
 	 */
 	public void setGrWeight(double grWeight) {
+		if(grWeight <= 0) {
+			throw new IllegalArgumentException("New grWeight value <= 0");
+		}
 		this.grWeight = grWeight;
 	}
 
@@ -116,6 +123,9 @@ public class Canvas {
 	 * @param costD set {@code costD} of {@code Canvas}
 	 */
 	public void setCostD(double costD) {
+		if(costD < 0) {
+			throw new IllegalArgumentException("New costD value < 0");
+		}
 		this.costD = costD;
 	}
 
@@ -140,9 +150,9 @@ public class Canvas {
 
 		Canvas canvas = (Canvas) o;
 
-		if (id != canvas.id) return false;
 		if (Double.compare(canvas.grWeight, grWeight) != 0) return false;
 		if (Double.compare(canvas.costD, costD) != 0) return false;
+		if (!idCanvas.equals(canvas.idCanvas)) return false;
 		return metal == canvas.metal;
 
 	}
@@ -151,7 +161,7 @@ public class Canvas {
 	public int hashCode() {
 		int result;
 		long temp;
-		result = id;
+		result = idCanvas.hashCode();
 		temp = Double.doubleToLongBits(grWeight);
 		result = 31 * result + (int) (temp ^ (temp >>> 32));
 		temp = Double.doubleToLongBits(costD);
@@ -163,7 +173,7 @@ public class Canvas {
 	@Override
 	public String toString() {
 		return "Canvas{" +
-				"id=" + id +
+				"id=" + idCanvas +
 				", grWeight=" + grWeight +
 				", costD=" + costD +
 				", metal=" + metal +

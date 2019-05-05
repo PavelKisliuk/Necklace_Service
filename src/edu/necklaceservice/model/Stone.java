@@ -23,7 +23,7 @@
  *
  */
 
-package com.github.pavelkisliuk.model.data;
+package edu.necklaceservice.model;
 
 /**
  * The {@code Stone} class represent abstract stone
@@ -43,7 +43,7 @@ public class Stone {
 	/**
 	 * ID of {@code Stone}
 	 */
-	private int id;
+	private String idStone;
 
 	/**
 	 * Weight of {@code Stone} in carats
@@ -67,12 +67,13 @@ public class Stone {
 	 * @param stone is object we copy
 	 */
 	public Stone(Stone stone) {
-		if(stone != null) {
-			this.name = stone.name;
-			this.id = stone.id;
-			this.ctWeight = stone.ctWeight;
-			this.costD = stone.costD;
+		if (stone == null) {
+			throw new NullPointerException("Null pointer in Stone copy constructor");
 		}
+		this.name = stone.name;
+		this.idStone = stone.idStone;
+		this.ctWeight = stone.ctWeight;
+		this.costD = stone.costD;
 	}
 
 	/**
@@ -92,15 +93,15 @@ public class Stone {
 	/**
 	 * @return {@code id} of {@code Stone}
 	 */
-	public int getId() {
-		return id;
+	public String getIdStone() {
+		return idStone;
 	}
 
 	/**
 	 * @param id set {@code id} of {@code Stone}
 	 */
-	public void setId(int id) {
-		this.id = id;
+	public void setIdStone(String id) {
+		this.idStone = id;
 	}
 
 	/**
@@ -114,6 +115,9 @@ public class Stone {
 	 * @param ctWeight set {@code ctWeight} of {@code Stone}
 	 */
 	public void setCtWeight(double ctWeight) {
+		if(ctWeight <= 0) {
+			throw new IllegalArgumentException("New ctWeight value <= 0");
+		}
 		this.ctWeight = ctWeight;
 	}
 
@@ -128,6 +132,9 @@ public class Stone {
 	 * @param costD set {@code costD} of {@code Stone}
 	 */
 	public void setCostD(double costD) {
+		if(costD < 0) {
+			throw new IllegalArgumentException("New costD value < 0");
+		}
 		this.costD = costD;
 	}
 
@@ -138,10 +145,11 @@ public class Stone {
 
 		Stone stone = (Stone) o;
 
-		if (id != stone.id) return false;
 		if (Double.compare(stone.ctWeight, ctWeight) != 0) return false;
 		if (Double.compare(stone.costD, costD) != 0) return false;
-		return name.equals(stone.name);
+		if (!name.equals(stone.name)) return false;
+		return idStone.equals(stone.idStone);
+
 	}
 
 	@Override
@@ -149,7 +157,7 @@ public class Stone {
 		int result;
 		long temp;
 		result = name.hashCode();
-		result = 31 * result + id;
+		result = 31 * result + idStone.hashCode();
 		temp = Double.doubleToLongBits(ctWeight);
 		result = 31 * result + (int) (temp ^ (temp >>> 32));
 		temp = Double.doubleToLongBits(costD);
@@ -161,7 +169,7 @@ public class Stone {
 	public String toString() {
 		return "Stone{" +
 				"name='" + name + '\'' +
-				", id=" + id +
+				", id=" + idStone +
 				", ctWeight=" + ctWeight +
 				", costD=" + costD +
 				'}';
