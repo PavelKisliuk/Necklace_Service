@@ -49,7 +49,7 @@ public class Gemstone extends Stone {
 	/**
 	 * Level of curiosity (rarity in nature) of {@code Gemstone}
 	 */
-	enum CuriosityLevel {VERY_LOW, LOW, MEDIUM, HARD, VERY_HARD}
+	enum CuriosityLevel {VERY_RARE, RARE, MEDIUM, FREQUENT, VERY_FREQUENT}
 
 	/**
 	 * Level of hardness (strength to defeat) of {@code Gemstone}
