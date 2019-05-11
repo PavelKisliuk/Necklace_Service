@@ -8,6 +8,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="testng-6.0" level="project" />
+    <orderEntry type="library" name="TestNG" level="project" />
+    <orderEntry type="library" name="Jackson" level="project" />
+    <orderEntry type="library" name="Log4J2" level="project" />
   </component>
 </module>
