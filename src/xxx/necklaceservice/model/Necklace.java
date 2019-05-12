@@ -23,7 +23,9 @@
  *
  */
 
-package edu.necklaceservice.model;
+package xxx.necklaceservice.model;
+
+import xxx.necklaceservice.exception.CustomException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +39,7 @@ import java.util.List;
  * @author Kisliuk Pavel Sergeevich
  * @since 12.0
  */
-public class Necklace {
+public class Necklace implements IProduct {
 	/**
 	 * ID of {@code Necklace}
 	 */
@@ -66,12 +68,13 @@ public class Necklace {
 	 *
 	 * @param necklace is object we copy
 	 */
-	public Necklace(Necklace necklace) {
-		if(necklace != null) {
-			this.idNecklace = necklace.idNecklace;
-			this.necklaceElementsList = new ArrayList<>(necklace.necklaceElementsList);
-			this.costD = necklace.costD;
+	public Necklace(Necklace necklace) throws CustomException {
+		if (necklace == null) {
+			throw new CustomException();
 		}
+		this.idNecklace = necklace.idNecklace;
+		this.necklaceElementsList = new ArrayList<>(necklace.necklaceElementsList);
+		this.costD = necklace.costD;
 	}
 
 	/**
@@ -113,9 +116,6 @@ public class Necklace {
 	 * @param costD set {@code id} of {@code Necklace}
 	 */
 	public void setCostD(double costD) {
-		if(costD < 0) {
-			throw new IllegalArgumentException("New costD value < 0");
-		}
 		this.costD = costD;
 	}
 

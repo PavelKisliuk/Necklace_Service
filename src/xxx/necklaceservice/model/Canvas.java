@@ -23,7 +23,9 @@
  *
  */
 
-package edu.necklaceservice.model;
+package xxx.necklaceservice.model;
+
+import xxx.necklaceservice.exception.CustomException;
 
 /**
  * The {@code Canvas} class represent place where are situated {@code Stone}
@@ -34,11 +36,11 @@ package edu.necklaceservice.model;
  * @author Kisliuk Pavel Sergeevich
  * @since 12.0
  */
-public class Canvas {
+public class Canvas implements IProduct {
 	/**
 	 * Latin name of metal of {@code Canvas}
 	 */
-	enum Metal {AURUM, ALBUM_AURUM, ARGENTUM, PLATINUM, AERIS}
+	public enum Metal {AURUM, ALBUM_AURUM, ARGENTUM, PLATINUM, AERIS}
 
 	/**
 	 * ID of {@code Canvas}
@@ -71,9 +73,9 @@ public class Canvas {
 	 *
 	 * @param canvas is object we copy
 	 */
-	public Canvas(Canvas canvas) {
+	public Canvas(Canvas canvas) throws CustomException {
 		if (canvas == null) {
-			throw new NullPointerException("Null pointer in Canvas copy constructor");
+			throw new CustomException();
 		}
 		this.idCanvas = canvas.idCanvas;
 		this.grWeight = canvas.grWeight;
@@ -106,9 +108,6 @@ public class Canvas {
 	 * @param grWeight set {@code grWeight} of {@code Canvas}
 	 */
 	public void setGrWeight(double grWeight) {
-		if(grWeight <= 0) {
-			throw new IllegalArgumentException("New grWeight value <= 0");
-		}
 		this.grWeight = grWeight;
 	}
 
@@ -123,9 +122,6 @@ public class Canvas {
 	 * @param costD set {@code costD} of {@code Canvas}
 	 */
 	public void setCostD(double costD) {
-		if(costD < 0) {
-			throw new IllegalArgumentException("New costD value < 0");
-		}
 		this.costD = costD;
 	}
 

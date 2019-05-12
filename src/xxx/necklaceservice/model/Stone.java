@@ -23,7 +23,9 @@
  *
  */
 
-package edu.necklaceservice.model;
+package xxx.necklaceservice.model;
+
+import xxx.necklaceservice.exception.CustomException;
 
 /**
  * The {@code Stone} class represent abstract stone
@@ -34,7 +36,7 @@ package edu.necklaceservice.model;
  * @author Kisliuk Pavel Sergeevich
  * @since 12.0
  */
-public class Stone {
+public class Stone implements IProduct {
 	/**
 	 * Name of {@code Stone}
 	 */
@@ -66,9 +68,9 @@ public class Stone {
 	 *
 	 * @param stone is object we copy
 	 */
-	public Stone(Stone stone) {
+	public Stone(Stone stone) throws CustomException {
 		if (stone == null) {
-			throw new NullPointerException("Null pointer in Stone copy constructor");
+			throw new CustomException();
 		}
 		this.name = stone.name;
 		this.idStone = stone.idStone;
@@ -115,9 +117,6 @@ public class Stone {
 	 * @param ctWeight set {@code ctWeight} of {@code Stone}
 	 */
 	public void setCtWeight(double ctWeight) {
-		if(ctWeight <= 0) {
-			throw new IllegalArgumentException("New ctWeight value <= 0");
-		}
 		this.ctWeight = ctWeight;
 	}
 
@@ -132,9 +131,6 @@ public class Stone {
 	 * @param costD set {@code costD} of {@code Stone}
 	 */
 	public void setCostD(double costD) {
-		if(costD < 0) {
-			throw new IllegalArgumentException("New costD value < 0");
-		}
 		this.costD = costD;
 	}
 

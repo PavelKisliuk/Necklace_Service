@@ -23,7 +23,9 @@
  *
  */
 
-package edu.necklaceservice.model;
+package xxx.necklaceservice.model;
+
+import xxx.necklaceservice.exception.CustomException;
 
 /**
  * The {@code Gemstone} class extend's {@code Stone} class and represent
@@ -49,12 +51,12 @@ public class Gemstone extends Stone {
 	/**
 	 * Level of curiosity (rarity in nature) of {@code Gemstone}
 	 */
-	enum CuriosityLevel {VERY_RARE, RARE, MEDIUM, FREQUENT, VERY_FREQUENT}
+	public enum CuriosityLevel {VERY_RARE, RARE, MEDIUM, FREQUENT, VERY_FREQUENT}
 
 	/**
 	 * Level of hardness (strength to defeat) of {@code Gemstone}
 	 */
-	enum HardnessLevel {HARD, SPARSE, SOFT}
+	public enum HardnessLevel {HARD, SPARSE, SOFT}
 
 	/**
 	 * Curiosity of {@code Gemstone}
@@ -84,7 +86,7 @@ public class Gemstone extends Stone {
 	 *
 	 * @param gemstone is object we copy
 	 */
-	public Gemstone(Gemstone gemstone) {
+	public Gemstone(Gemstone gemstone) throws CustomException {
 		super(gemstone);
 		this.curiosityLevel = gemstone.curiosityLevel;
 		this.hardnessLevel = gemstone.hardnessLevel;
@@ -130,9 +132,6 @@ public class Gemstone extends Stone {
 	 * @param opacity set {@code opacity} of {@code Gemstone}
 	 */
 	public void setOpacity(double opacity) {
-		if((opacity < MIN_OPACITY) || (opacity > MAX_OPACITY)) {
-			throw new IllegalArgumentException("Incorrect opacity value in Gemstone");
-		}
 		this.opacity = opacity;
 	}
 

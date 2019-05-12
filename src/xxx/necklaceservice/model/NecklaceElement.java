@@ -23,7 +23,9 @@
  *
  */
 
-package edu.necklaceservice.model;
+package xxx.necklaceservice.model;
+
+import xxx.necklaceservice.exception.CustomException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +40,7 @@ import java.util.List;
  * @author Kisliuk Pavel Sergeevich
  * @since 12.0
  */
-public class NecklaceElement {
+public class NecklaceElement implements IProduct {
 	/**
 	 * The {@code Canvas} class represent place where are situated {@code Stone}
 	 */
@@ -61,9 +63,9 @@ public class NecklaceElement {
 	 *
 	 * @param necklaceElement is object we copy
 	 */
-	public NecklaceElement(NecklaceElement necklaceElement) {
+	public NecklaceElement(NecklaceElement necklaceElement) throws CustomException {
 		if (necklaceElement == null) {
-			throw new NullPointerException("Null pointer in NecklaceElement copy constructor");
+			throw new CustomException();
 		}
 		this.canvas = necklaceElement.canvas;
 		this.stonesGroup = new ArrayList<>(necklaceElement.stonesGroup);
