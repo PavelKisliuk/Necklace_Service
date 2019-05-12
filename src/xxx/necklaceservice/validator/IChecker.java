@@ -1,5 +1,5 @@
 /*
- * By Pavel Kisliuk, 03.05.2019
+ * By Pavel Kisliuk, 11.05.2019
  * This is class for education and nothing rights don't reserved.
  *
  *

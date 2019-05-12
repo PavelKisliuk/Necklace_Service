@@ -1,3 +1,28 @@
+/*
+ * By Pavel Kisliuk, 11.05.2019
+ * This is class for education and nothing rights don't reserved.
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
 package xxx.necklaceservice.validator;
 
 import org.apache.logging.log4j.Level;
@@ -7,15 +32,53 @@ import xxx.necklaceservice.exception.CustomException;
 
 import java.util.Arrays;
 
+/**
+ * Checker of {@code Stone} implementation of the {@code IChecker} interface.
+ * @author Kisliuk Pavel Sergeevich
+ * @see IChecker
+ * @see xxx.necklaceservice.model.Stone
+ * @since 12.0
+ */
 public class StoneChecker implements IChecker {
 	private static final Logger LOGGER = LogManager.getLogger();
 
+	/**
+	 * Represent a quantity elements {@code Stone}
+	 */
 	public static final int ELEMENTS_QUANTITY = 4;
+
+	/**
+	 * Represent a number of element of {@code Stone} {@code name} in {@code String}
+	 * array for correct validation
+	 */
 	public static final int NAME_PLACE = 0;
+
+	/**
+	 * Represent a number of element of {@code Stone} {@code id} in {@code String}
+	 * array for correct validation
+	 */
 	public static final int ID_PLACE = 1;
+
+	/**
+	 * Represent a number of element of {@code Stone} {@code weightCt} in {@code String}
+	 * array for correct validation
+	 */
 	public static final int WEIGHT_PLACE = 2;
+
+	/**
+	 * Represent a number of element of {@code Stone} {@code costD} in {@code String}
+	 * array for correct validation
+	 */
 	public static final int COST_PLACE = 3;
 
+	/**
+	 * Return {@code true} if all element's of {@param elementsString} are valid,
+	 * else return {@code false}
+	 * @param elementsString is array of {@code String} for validation
+	 * @return {@code true} if all element's of {@param elementsString} are valid
+	 * @throws CustomException if {@param elementsString} contain wrong quantity of element's
+	 * or {@code null}
+	 */
 	@Override
 	public boolean isValid(String[] elementsString) throws CustomException {
 		if ((elementsString == null) ||
@@ -47,6 +110,14 @@ public class StoneChecker implements IChecker {
 		return true;
 	}
 
+	/**
+	 * Return {@code true} if {@param name} is correct for assignment
+	 * to field {@code name} of {@code Stone}, else return {@code false}
+	 * @param name is {@code String} representation of {@code Stone} field {@code name}
+	 * @return {@code true} if {@param name} is correct for assignment
+	 * to field {@code name} of {@code Stone}
+	 * @throws CustomException if {@param name} is {@code null}
+	 */
 	public boolean isValidName(String name) throws CustomException {
 		if (name == null) {
 			LOGGER.log(Level.ERROR, "Problem with String name -> " + null);
@@ -56,6 +127,14 @@ public class StoneChecker implements IChecker {
 		return LOGGER.traceExit(name.matches("[a-zA-Z]+"));
 	}
 
+	/**
+	 * Return {@code true} if {@param id} is correct for assignment
+	 * to field {@code id} of {@code Stone}, else return {@code false}
+	 * @param id is {@code String} representation of {@code Stone} field {@code id}
+	 * @return {@code true} if {@param id} is correct for assignment
+	 * to field {@code id} of {@code Stone}
+	 * @throws CustomException if {@param id} is {@code null}
+	 */
 	public boolean isValidId(String id) throws CustomException {
 		if (id == null) {
 			LOGGER.log(Level.ERROR, "Problem with String id -> " + null);
@@ -65,6 +144,14 @@ public class StoneChecker implements IChecker {
 		return LOGGER.traceExit(id.matches("[a-zA-Z]+\\d+"));
 	}
 
+	/**
+	 * Return {@code true} if {@param weight} is correct for assignment
+	 * to field {@code weightCt} of {@code Stone}, else return {@code false}
+	 * @param weight is {@code String} representation of {@code Stone} field {@code weightCt}
+	 * @return {@code true} if {@param weight} is correct for assignment
+	 * to field {@code weightCt} of {@code Stone}
+	 * @throws CustomException if {@param weight} is {@code null}
+	 */
 	public boolean isValidWeight(String weight) throws CustomException {
 		if (weight == null) {
 			LOGGER.log(Level.ERROR, "Problem with String weight -> " + null);
@@ -74,6 +161,14 @@ public class StoneChecker implements IChecker {
 		return LOGGER.traceExit(isValidUnsignedDouble(weight));
 	}
 
+	/**
+	 * Return {@code true} if {@param cost} is correct for assignment
+	 * to field {@code costD} of {@code Stone}, else return {@code false}
+	 * @param cost is {@code String} representation of {@code Stone} field {@code costD}
+	 * @return {@code true} if {@param cost} is correct for assignment
+	 * to field {@code costD} of {@code Stone}
+	 * @throws CustomException if {@param cost} is {@code null}
+	 */
 	public boolean isValidCost(String cost) throws CustomException {
 		if (cost == null) {
 			LOGGER.log(Level.ERROR, "Problem with String cost -> " + null);
