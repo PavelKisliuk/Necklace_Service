@@ -1,38 +1,29 @@
 package xxx.necklaceservice.reader;
 
 import org.testng.annotations.Test;
-import xxx.necklaceservice.creator.CanvasCreator;
-import xxx.necklaceservice.creator.GemstoneCreator;
-import xxx.necklaceservice.creator.NecklaceCreator;
-import xxx.necklaceservice.creator.NecklaceElementCreator;
 import xxx.necklaceservice.exception.CustomException;
-import xxx.necklaceservice.model.Canvas;
-import xxx.necklaceservice.model.Gemstone;
-import xxx.necklaceservice.model.Necklace;
-import xxx.necklaceservice.model.Stone;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static org.testng.Assert.*;
 
-public class FileReaderNecklaceTest {
-	private FileReaderNecklace fileReaderNecklace = new FileReaderNecklace();
+public class NecklaceFileReaderTest {
+	private NecklaceFileReader necklaceFileReader = new NecklaceFileReader();
 
 	@Test(expectedExceptions = CustomException.class)
 	public void testReadNull() throws CustomException {
-		fileReaderNecklace.read(null);
+		necklaceFileReader.read(null);
 	}
 
 	@Test(expectedExceptions = CustomException.class)
 	public void testReadEmpty() throws CustomException {
-		fileReaderNecklace.read("");
+		necklaceFileReader.read("");
 	}
 
 	@Test(expectedExceptions = CustomException.class)
 	public void testReadNotExist() throws CustomException {
-		fileReaderNecklace.read("sgsgdgfgdfg");
+		necklaceFileReader.read("sgsgdgfgdfg");
 	}
 
 	@Test
@@ -44,6 +35,6 @@ public class FileReaderNecklaceTest {
 		necklaceList.add("&3080");
 		necklaceList.add(">");
 
-		assertEquals(necklaceList, fileReaderNecklace.read("testfile/Filetest.txt"));
+		assertEquals(necklaceList, necklaceFileReader.read("testfile/Filetest.txt"));
 	}
 }

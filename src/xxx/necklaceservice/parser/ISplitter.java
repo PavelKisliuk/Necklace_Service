@@ -31,6 +31,7 @@ import java.util.List;
 
 /**
  * The {@code ISplitter} interface provide method for separating data
+ * <p>
  *
  * @author Kisliuk Pavel Sergeevich
  * @see NecklaceSplitter

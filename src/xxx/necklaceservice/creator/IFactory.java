@@ -29,6 +29,7 @@ import xxx.necklaceservice.model.IProduct;
 
 /**
  * The {@code IFactory} interface provide method for creation {@code IProduct} instances
+ * <p>
  *
  * @author Kisliuk Pavel Sergeevich
  * @see StoneCreator
@@ -42,6 +43,7 @@ import xxx.necklaceservice.model.IProduct;
 public interface IFactory {
 	/**
 	 * Create {@code IProduct} instance and return it
+	 * <p>
 	 *
 	 * @param elementsString {@code String} representation of {@code IProduct}
 	 * @return instance of {@code IProduct}

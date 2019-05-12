@@ -38,6 +38,7 @@ import java.util.Arrays;
 
 /**
  * Creator of {@code Gemstone} implementation of the {@code IFactory} interface.
+ * <p>
  *
  * @author Kisliuk Pavel Sergeevich
  * @see IFactory
@@ -54,6 +55,7 @@ public class GemstoneCreator implements IFactory {
 
 	/**
 	 * Create {@code IProduct} instance of {@code Gemstone} and return it
+	 * <p>
 	 *
 	 * @param elementsString {@code String} representation of {@code IProduct}
 	 * @return instance of {@code IProduct}

@@ -13,9 +13,9 @@ public class GemstoneCheckerTest {
 		gemstoneChecker.isValid(null);
 	}
 
-	@Test(expectedExceptions = CustomException.class)
+	@Test
 	public void testIsValidEmpty() throws CustomException {
-		gemstoneChecker.isValid(new String[0]);
+		assertFalse(gemstoneChecker.isValid(new String[0]));
 	}
 
 	@Test

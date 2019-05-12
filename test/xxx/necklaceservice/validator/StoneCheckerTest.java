@@ -13,9 +13,9 @@ public class StoneCheckerTest {
 		stoneChecker.isValid(null);
 	}
 
-	@Test(expectedExceptions = CustomException.class)
+	@Test
 	public void testIsValidEmpty() throws CustomException {
-		stoneChecker.isValid(new String[0]);
+		assertFalse(stoneChecker.isValid(new String[0]));
 	}
 
 	@Test

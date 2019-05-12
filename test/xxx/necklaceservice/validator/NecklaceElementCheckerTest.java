@@ -13,6 +13,7 @@ public class NecklaceElementCheckerTest {
 		necklaceElementChecker.isValid(null);
 	}
 
+	@Test
 	public void testIsValid() throws CustomException {
 		String[] stonesGroup = {"canvas00003-100-175-ALBUM_AURUM",
 				"Diamond-Diamond00006-10-100-RARE-HARD-0.45",

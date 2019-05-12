@@ -35,11 +35,11 @@ import java.util.Arrays;
 
 /**
  * Checker of {@code Gemstone} implementation of the {@code IChecker} interface.
+ * <p>
  *
  * @author Kisliuk Pavel Sergeevich
  * @see IChecker
  * @see StoneChecker
- * @see GemstoneChecker
  * @see CanvasChecker
  * @see NecklaceElementChecker
  * @see NecklaceChecker
@@ -75,18 +75,22 @@ public class GemstoneChecker extends StoneChecker implements IChecker {
 	/**
 	 * Return {@code true} if all element's of {@param elementsString} are valid,
 	 * else return {@code false}
+	 * <p>
 	 *
 	 * @param elementsString is array of {@code String} for validation
 	 * @return {@code true} if all element's of {@param elementsString} are valid
-	 * @throws CustomException if {@param elementsString} contain wrong quantity of element's
-	 *                         or {@code null}
+	 * @throws CustomException if {@param elementsString} contain {@code null}
 	 */
 	@Override
 	public boolean isValid(String[] elementsString) throws CustomException {
-		if ((elementsString == null) ||
-				elementsString.length != ELEMENTS_QUANTITY) {
-			LOGGER.log(Level.ERROR, "Problem with elementsString -> " + Arrays.toString(elementsString));
+		if (elementsString == null) {
+			LOGGER.log(Level.ERROR, "Problem with elementsString -> " + null);
 			throw new CustomException();
+		}
+
+		if (elementsString.length != ELEMENTS_QUANTITY) {
+			LOGGER.log(Level.WARN, "Incorrect quantity of elements");
+			return LOGGER.traceExit(false);
 		}
 
 		if (!(super.isValid(Arrays.copyOfRange(elementsString, 0, (StoneChecker.ELEMENTS_QUANTITY))))) {
@@ -114,6 +118,7 @@ public class GemstoneChecker extends StoneChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param curiosity} is correct for assignment
 	 * to field {@code curiosityLevel} of {@code Stone}, else return {@code false}
+	 * <p>
 	 *
 	 * @param curiosity is {@code String} representation of {@code Stone} field {@code curiosityLevel}
 	 * @return {@code true} if {@param curiosity} is correct for assignment
@@ -135,6 +140,7 @@ public class GemstoneChecker extends StoneChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param hardness} is correct for assignment
 	 * to field {@code hardnessLevel} of {@code Stone}, else return {@code false}
+	 * <p>
 	 *
 	 * @param hardness is {@code String} representation of {@code Stone} field {@code hardnessLevel}
 	 * @return {@code true} if {@param hardness} is correct for assignment
@@ -156,6 +162,7 @@ public class GemstoneChecker extends StoneChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param opacity} is correct for assignment
 	 * to field {@code opacity} of {@code Stone}, else return {@code false}
+	 * <p>
 	 *
 	 * @param opacity is {@code String} representation of {@code Stone} field {@code opacity}
 	 * @return {@code true} if {@param opacity} is correct for assignment

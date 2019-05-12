@@ -34,6 +34,7 @@ import java.util.Arrays;
 
 /**
  * Checker of {@code NecklaceElement} implementation of the {@code IChecker} interface.
+ * <p>
  *
  * @author Kisliuk Pavel Sergeevich
  * @see IChecker
@@ -68,6 +69,7 @@ public class NecklaceElementChecker implements IChecker {
 	/**
 	 * Return {@code true} if all element's of {@param elementsString} are valid,
 	 * else return {@code false}
+	 * <p>
 	 *
 	 * @param elementsString is array of {@code String} for validation
 	 * @return {@code true} if all element's of {@param elementsString} are valid
@@ -76,10 +78,14 @@ public class NecklaceElementChecker implements IChecker {
 	 */
 	@Override
 	public boolean isValid(String[] elementsString) throws CustomException {
-		if ((elementsString == null) ||
-				elementsString.length < MIN_ELEMENTS_QUANTITY) {
-			LOGGER.log(Level.ERROR, "Problem with elementsString -> " + Arrays.toString(elementsString));
+		if (elementsString == null) {
+			LOGGER.log(Level.ERROR, "Problem with elementsString -> " + null);
 			throw new CustomException();
+		}
+
+		if (elementsString.length < MIN_ELEMENTS_QUANTITY) {
+			LOGGER.log(Level.WARN, "Incorrect quantity of elements");
+			return LOGGER.traceExit(false);
 		}
 
 		if (!(isValidCanvas(elementsString[CANVAS_PLACE]))) {
@@ -99,6 +105,7 @@ public class NecklaceElementChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param canvas} is correct for assignment
 	 * to field {@code canvas} of {@code NecklaceElement}, else return {@code false}
+	 * <p>
 	 *
 	 * @param canvas is {@code String} representation of {@code NecklaceElement} field {@code canvas}
 	 * @return {@code true} if {@param canvas} is correct for assignment
@@ -117,6 +124,7 @@ public class NecklaceElementChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param stonesGroup} is correct for assignment
 	 * to field {@code stonesGroup} of {@code NecklaceElement}, else return {@code false}
+	 * <p>
 	 *
 	 * @param stonesGroup is {@code String} representation of {@code NecklaceElement} field {@code stonesGroup}
 	 * @return {@code true} if {@param stonesGroup} is correct for assignment
@@ -136,6 +144,7 @@ public class NecklaceElementChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param stonesGroup} is correct for assignment
 	 * to field {@code stonesGroup} of {@code NecklaceElement}, else return {@code false}
+	 * <p>
 	 *
 	 * @param stonesGroup is {@code String} representation of {@code NecklaceElement} field {@code stonesGroup}
 	 * @return {@code true} if {@param stonesGroup} is correct for assignment
@@ -153,7 +162,7 @@ public class NecklaceElementChecker implements IChecker {
 		while (i < stonesGroup.length) {
 			String[] splitedStone = stonesGroup[i].split("-");
 
-			if (!((splitedStone.length != 4) ?
+			if (!((splitedStone.length != StoneChecker.ELEMENTS_QUANTITY) ?
 					(new GemstoneChecker().isValid(splitedStone)) :
 					(new StoneChecker().isValid(splitedStone)))) {
 				return LOGGER.traceExit(false);

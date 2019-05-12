@@ -35,6 +35,7 @@ import java.util.List;
 
 /**
  * Separator of {@code Necklace} implementation of the {@code ISplitter} interface.
+ * <p>
  *
  * @author Kisliuk Pavel Sergeevich
  * @see ISplitter
@@ -46,6 +47,7 @@ public class NecklaceSplitter implements ISplitter {
 
 	/**
 	 * Return array of {@code String} as {@code Necklace} string representation
+	 * <p>
 	 *
 	 * @param stringList represent {@code List for separating}
 	 * @return array of separated data

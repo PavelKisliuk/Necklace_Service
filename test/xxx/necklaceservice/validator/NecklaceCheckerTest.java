@@ -13,9 +13,9 @@ public class NecklaceCheckerTest {
 		necklaceChecker.isValid(null);
 	}
 
-	@Test(expectedExceptions = CustomException.class)
+	@Test
 	public void testIsValidEmpty() throws CustomException {
-		necklaceChecker.isValid(new String[0]);
+		assertFalse(necklaceChecker.isValid(new String[0]));
 	}
 
 	@Test

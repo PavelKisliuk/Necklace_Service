@@ -13,9 +13,9 @@ public class CanvasCheckerTest {
 		canvasChecker.isValid(null);
 	}
 
-	@Test(expectedExceptions = CustomException.class)
+	@Test
 	public void testIsValidEmpty() throws CustomException {
-		canvasChecker.isValid(new String[0]);
+		assertFalse(canvasChecker.isValid(new String[0]));
 	}
 
 	@Test

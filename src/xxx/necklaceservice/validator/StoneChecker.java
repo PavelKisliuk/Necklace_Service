@@ -30,14 +30,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import xxx.necklaceservice.exception.CustomException;
 
-import java.util.Arrays;
-
 /**
  * Checker of {@code Stone} implementation of the {@code IChecker} interface.
+ * <p>
  *
  * @author Kisliuk Pavel Sergeevich
  * @see IChecker
- * @see StoneChecker
  * @see GemstoneChecker
  * @see CanvasChecker
  * @see NecklaceElementChecker
@@ -80,18 +78,22 @@ public class StoneChecker implements IChecker {
 	/**
 	 * Return {@code true} if all element's of {@param elementsString} are valid,
 	 * else return {@code false}
+	 * <p>
 	 *
 	 * @param elementsString is array of {@code String} for validation
 	 * @return {@code true} if all element's of {@param elementsString} are valid
-	 * @throws CustomException if {@param elementsString} contain wrong quantity of element's
-	 *                         or {@code null}
+	 * @throws CustomException if {@param elementsString} contain {@code null}
 	 */
 	@Override
 	public boolean isValid(String[] elementsString) throws CustomException {
-		if ((elementsString == null) ||
-				elementsString.length != ELEMENTS_QUANTITY) {
-			LOGGER.log(Level.ERROR, "Problem with elementsString -> " + Arrays.toString(elementsString));
+		if (elementsString == null) {
+			LOGGER.log(Level.ERROR, "Problem with elementsString -> " + null);
 			throw new CustomException();
+		}
+
+		if (elementsString.length != ELEMENTS_QUANTITY) {
+			LOGGER.log(Level.WARN, "Incorrect quantity of elements");
+			return LOGGER.traceExit(false);
 		}
 
 		if (!(isValidName(elementsString[NAME_PLACE]))) {
@@ -120,6 +122,7 @@ public class StoneChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param name} is correct for assignment
 	 * to field {@code name} of {@code Stone}, else return {@code false}
+	 * <p>
 	 *
 	 * @param name is {@code String} representation of {@code Stone} field {@code name}
 	 * @return {@code true} if {@param name} is correct for assignment
@@ -138,6 +141,7 @@ public class StoneChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param id} is correct for assignment
 	 * to field {@code idStone} of {@code Stone}, else return {@code false}
+	 * <p>
 	 *
 	 * @param id is {@code String} representation of {@code Stone} field {@code idStone}
 	 * @return {@code true} if {@param id} is correct for assignment
@@ -156,6 +160,7 @@ public class StoneChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param weight} is correct for assignment
 	 * to field {@code ctWeight} of {@code Stone}, else return {@code false}
+	 * <p>
 	 *
 	 * @param weight is {@code String} representation of {@code Stone} field {@code ctWeight}
 	 * @return {@code true} if {@param weight} is correct for assignment
@@ -174,6 +179,7 @@ public class StoneChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param cost} is correct for assignment
 	 * to field {@code costD} of {@code Stone}, else return {@code false}
+	 * <p>
 	 *
 	 * @param cost is {@code String} representation of {@code Stone} field {@code costD}
 	 * @return {@code true} if {@param cost} is correct for assignment

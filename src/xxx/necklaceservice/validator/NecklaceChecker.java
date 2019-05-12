@@ -34,6 +34,7 @@ import java.util.Arrays;
 
 /**
  * Checker of {@code Necklace} implementation of the {@code IChecker} interface.
+ * <p>
  *
  * @author Kisliuk Pavel Sergeevich
  * @see IChecker
@@ -41,7 +42,6 @@ import java.util.Arrays;
  * @see GemstoneChecker
  * @see CanvasChecker
  * @see NecklaceElementChecker
- * @see NecklaceChecker
  * @see xxx.necklaceservice.model.Necklace
  * @since 12.0
  */
@@ -73,18 +73,22 @@ public class NecklaceChecker implements IChecker {
 	/**
 	 * Return {@code true} if all element's of {@param elementsString} are valid,
 	 * else return {@code false}
+	 * <p>
 	 *
 	 * @param elementsString is array of {@code String} for validation
 	 * @return {@code true} if all element's of {@param elementsString} are valid
-	 * @throws CustomException if {@param elementsString} contain wrong quantity of element's
-	 *                         or {@code null}
+	 * @throws CustomException if {@param elementsString} contain {@code null}
 	 */
 	@Override
 	public boolean isValid(String[] elementsString) throws CustomException {
-		if ((elementsString == null) ||
-				elementsString.length != ELEMENTS_QUANTITY) {
-			LOGGER.log(Level.ERROR, "Problem with elementsString -> " + Arrays.toString(elementsString));
+		if (elementsString == null) {
+			LOGGER.log(Level.ERROR, "Problem with elementsString -> " + null);
 			throw new CustomException();
+		}
+
+		if (elementsString.length != ELEMENTS_QUANTITY) {
+			LOGGER.log(Level.WARN, "Incorrect quantity of elements");
+			return LOGGER.traceExit(false);
 		}
 
 		if (!(isValidId(elementsString[ID_PLACE]))) {
@@ -109,6 +113,7 @@ public class NecklaceChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param id} is correct for assignment
 	 * to field {@code idNecklace} of {@code Necklace}, else return {@code false}
+	 * <p>
 	 *
 	 * @param id is {@code String} representation of {@code Necklace} field {@code idSNecklace}
 	 * @return {@code true} if {@param id} is correct for assignment
@@ -127,6 +132,7 @@ public class NecklaceChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param necklaceElementsGroup} is correct for assignment
 	 * to field {@code necklaceElementsList} of {@code Necklace}, else return {@code false}
+	 * <p>
 	 *
 	 * @param necklaceElementsGroup is {@code String} representation of {@code Necklace} field
 	 *                              {@code necklaceElementsGroup}
@@ -146,6 +152,7 @@ public class NecklaceChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param necklaceElementsGroup} is correct for assignment
 	 * to field {@code necklaceElementsList} of {@code Necklace}, else return {@code false}
+	 * <p>
 	 *
 	 * @param necklaceElementsGroup is {@code String} representation of {@code Necklace} field
 	 *                              {@code necklaceElementsGroup}
@@ -175,6 +182,7 @@ public class NecklaceChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param cost} is correct for assignment
 	 * to field {@code costD} of {@code Necklace}, else return {@code false}
+	 * <p>
 	 *
 	 * @param cost is {@code String} representation of {@code Necklace} field {@code costD}
 	 * @return {@code true} if {@param cost} is correct for assignment

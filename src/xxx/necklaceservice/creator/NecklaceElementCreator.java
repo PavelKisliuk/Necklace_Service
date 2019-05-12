@@ -38,6 +38,7 @@ import java.util.Arrays;
 
 /**
  * Creator of {@code NecklaceElement} implementation of the {@code IFactory} interface.
+ * <p>
  *
  * @author Kisliuk Pavel Sergeevich
  * @see IFactory
@@ -54,6 +55,7 @@ public class NecklaceElementCreator implements IFactory {
 
 	/**
 	 * Create {@code IProduct} instance of {@code NecklaceElement} and return it
+	 * <p>
 	 *
 	 * @param elementsString {@code String} representation of {@code IProduct}
 	 * @return instance of {@code IProduct}
