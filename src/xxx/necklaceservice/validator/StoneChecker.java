@@ -146,10 +146,10 @@ public class StoneChecker implements IChecker {
 
 	/**
 	 * Return {@code true} if {@param weight} is correct for assignment
-	 * to field {@code weightCt} of {@code Stone}, else return {@code false}
-	 * @param weight is {@code String} representation of {@code Stone} field {@code weightCt}
+	 * to field {@code ctWeight} of {@code Stone}, else return {@code false}
+	 * @param weight is {@code String} representation of {@code Stone} field {@code ctWeight}
 	 * @return {@code true} if {@param weight} is correct for assignment
-	 * to field {@code weightCt} of {@code Stone}
+	 * to field {@code ctWeight} of {@code Stone}
 	 * @throws CustomException if {@param weight} is {@code null}
 	 */
 	public boolean isValidWeight(String weight) throws CustomException {
