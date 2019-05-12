@@ -42,7 +42,7 @@ import java.util.Arrays;
  * @see xxx.necklaceservice.model.Gemstone
  * @since 12.0
  */
-public class GemstoneChecker extends StoneChecker {
+public class GemstoneChecker extends StoneChecker implements IChecker {
 	private static final Logger LOGGER = LogManager.getLogger();
 
 	/**
