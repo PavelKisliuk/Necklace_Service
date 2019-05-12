@@ -81,30 +81,30 @@ public class GemstoneChecker extends StoneChecker implements IChecker {
 	public boolean isValid(String[] elementsString) throws CustomException {
 		if ((elementsString == null) ||
 				elementsString.length != ELEMENTS_QUANTITY) {
-			LOGGER.log(Level.ERROR, "Problem with String path -> " + Arrays.toString(elementsString));
+			LOGGER.log(Level.ERROR, "Problem with elementsString -> " + Arrays.toString(elementsString));
 			throw new CustomException();
 		}
 
 		if (!(super.isValid(Arrays.copyOfRange(elementsString, 0, (StoneChecker.ELEMENTS_QUANTITY))))) {
-			return false;
+			return LOGGER.traceExit(false);
 		}
 
 		if (!(isValidCuriosity(elementsString[CURIOSITY_PLACE]))) {
 			LOGGER.log(Level.WARN, "Incorrect curiosity -> " + elementsString[CURIOSITY_PLACE]);
-			return false;
+			return LOGGER.traceExit(false);
 		}
 
 		if (!(isValidHardness(elementsString[HARDNESS_PLACE]))) {
 			LOGGER.log(Level.WARN, "Incorrect hardness -> " + elementsString[HARDNESS_PLACE]);
-			return false;
+			return LOGGER.traceExit(false);
 		}
 
 		if (!(isValidOpacity(elementsString[OPACITY_PLACE]))) {
 			LOGGER.log(Level.WARN, "Incorrect opacity -> " + elementsString[OPACITY_PLACE]);
-			return false;
+			return LOGGER.traceExit(false);
 		}
 
-		return true;
+		return LOGGER.traceExit(true);
 	}
 
 	/**

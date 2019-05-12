@@ -1,5 +1,5 @@
 /*
- * By Pavel Kisliuk, 11.05.2019
+ * By Pavel Kisliuk, 12.05.2019
  * This is class for education and nothing rights don't reserved.
  *
  *
@@ -29,47 +29,49 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import xxx.necklaceservice.exception.CustomException;
+import xxx.necklaceservice.model.Canvas;
 
 import java.util.Arrays;
 
 /**
- * Checker of {@code Stone} implementation of the {@code IChecker} interface.
+ * Checker of {@code Canvas} implementation of the {@code IChecker} interface.
  * @author Kisliuk Pavel Sergeevich
  * @see IChecker
  * @see xxx.necklaceservice.model.Stone
  * @since 12.0
  */
-public class StoneChecker implements IChecker {
+public class CanvasChecker implements IChecker {
 	private static final Logger LOGGER = LogManager.getLogger();
 
 	/**
-	 * Represent a quantity elements {@code Stone}
+	 * Represent a quantity elements {@code Canvas}
 	 */
 	public static final int ELEMENTS_QUANTITY = 4;
 
 	/**
-	 * Represent a number of element of {@code Stone} {@code name} in {@code String}
+	 * Represent a number of element of {@code Canvas} {@code idCanvas} in {@code String}
 	 * array for correct validation
 	 */
-	public static final int NAME_PLACE = 0;
+	public static final int ID_PLACE = 0;
 
 	/**
-	 * Represent a number of element of {@code Stone} {@code idStone} in {@code String}
+	 * Represent a number of element of {@code Canvas} {@code grWeight} in {@code String}
 	 * array for correct validation
 	 */
-	public static final int ID_PLACE = 1;
+	public static final int WEIGHT_PLACE = 1;
 
 	/**
-	 * Represent a number of element of {@code Stone} {@code ctWeight} in {@code String}
+	 * Represent a number of element of {@code Canvas} {@code costD} in {@code String}
 	 * array for correct validation
 	 */
-	public static final int WEIGHT_PLACE = 2;
+	public static final int COST_PLACE = 2;
 
 	/**
-	 * Represent a number of element of {@code Stone} {@code costD} in {@code String}
+	 * Represent a number of element of {@code Canvas} {@code metal} in {@code String}
 	 * array for correct validation
 	 */
-	public static final int COST_PLACE = 3;
+	public static final int METAL_PLACE = 3;
+
 
 	/**
 	 * Return {@code true} if all element's of {@param elementsString} are valid,
@@ -87,11 +89,6 @@ public class StoneChecker implements IChecker {
 			throw new CustomException();
 		}
 
-		if (!(isValidName(elementsString[NAME_PLACE]))) {
-			LOGGER.log(Level.WARN, "Incorrect name -> " + elementsString[NAME_PLACE]);
-			return LOGGER.traceExit(false);
-		}
-
 		if (!(isValidId(elementsString[ID_PLACE]))) {
 			LOGGER.log(Level.WARN, "Incorrect id -> " + elementsString[ID_PLACE]);
 			return LOGGER.traceExit(false);
@@ -107,32 +104,20 @@ public class StoneChecker implements IChecker {
 			return LOGGER.traceExit(false);
 		}
 
+		if (!(isValidMetal(elementsString[METAL_PLACE]))) {
+			LOGGER.log(Level.WARN, "Incorrect metal -> " + elementsString[METAL_PLACE]);
+			return LOGGER.traceExit(false);
+		}
+
 		return LOGGER.traceExit(true);
 	}
 
 	/**
-	 * Return {@code true} if {@param name} is correct for assignment
-	 * to field {@code name} of {@code Stone}, else return {@code false}
-	 * @param name is {@code String} representation of {@code Stone} field {@code name}
-	 * @return {@code true} if {@param name} is correct for assignment
-	 * to field {@code name} of {@code Stone}
-	 * @throws CustomException if {@param name} is {@code null}
-	 */
-	public boolean isValidName(String name) throws CustomException {
-		if (name == null) {
-			LOGGER.log(Level.ERROR, "Problem with String name -> " + null);
-			throw new CustomException();
-		}
-		LOGGER.log(Level.DEBUG, "Check -> " + name);
-		return LOGGER.traceExit(name.trim().matches("[a-zA-Z]+"));
-	}
-
-	/**
 	 * Return {@code true} if {@param id} is correct for assignment
-	 * to field {@code idStone} of {@code Stone}, else return {@code false}
-	 * @param id is {@code String} representation of {@code Stone} field {@code idStone}
+	 * to field {@code idCanvas} of {@code Canvas}, else return {@code false}
+	 * @param id is {@code String} representation of {@code Canvas} field {@code idCanvas}
 	 * @return {@code true} if {@param id} is correct for assignment
-	 * to field {@code idStone} of {@code Stone}
+	 * to field {@code idCanvas} of {@code Canvas}
 	 * @throws CustomException if {@param id} is {@code null}
 	 */
 	public boolean isValidId(String id) throws CustomException {
@@ -146,10 +131,10 @@ public class StoneChecker implements IChecker {
 
 	/**
 	 * Return {@code true} if {@param weight} is correct for assignment
-	 * to field {@code ctWeight} of {@code Stone}, else return {@code false}
-	 * @param weight is {@code String} representation of {@code Stone} field {@code ctWeight}
+	 * to field {@code grWeight} of {@code Canvas}, else return {@code false}
+	 * @param weight is {@code String} representation of {@code Canvas} field {@code grWeight}
 	 * @return {@code true} if {@param weight} is correct for assignment
-	 * to field {@code ctWeight} of {@code Stone}
+	 * to field {@code grWeight} of {@code Canvas}
 	 * @throws CustomException if {@param weight} is {@code null}
 	 */
 	public boolean isValidWeight(String weight) throws CustomException {
@@ -163,10 +148,10 @@ public class StoneChecker implements IChecker {
 
 	/**
 	 * Return {@code true} if {@param cost} is correct for assignment
-	 * to field {@code costD} of {@code Stone}, else return {@code false}
-	 * @param cost is {@code String} representation of {@code Stone} field {@code costD}
+	 * to field {@code costD} of {@code Canvas}, else return {@code false}
+	 * @param cost is {@code String} representation of {@code Canvas} field {@code costD}
 	 * @return {@code true} if {@param cost} is correct for assignment
-	 * to field {@code costD} of {@code Stone}
+	 * to field {@code costD} of {@code Canvas}
 	 * @throws CustomException if {@param cost} is {@code null}
 	 */
 	public boolean isValidCost(String cost) throws CustomException {
@@ -176,5 +161,25 @@ public class StoneChecker implements IChecker {
 		}
 		LOGGER.log(Level.DEBUG, "Check -> " + cost);
 		return LOGGER.traceExit(isValidUnsignedDouble(cost.trim()));
+	}
+
+	/**
+	 * Return {@code true} if {@param metal} is correct for assignment
+	 * to field {@code metal} of {@code Canvas}, else return {@code false}
+	 * @param metal is {@code String} representation of {@code Canvas} field {@code metal}
+	 * @return {@code true} if {@param metal} is correct for assignment
+	 * to field {@code metal} of {@code Canvas}
+	 * @throws CustomException if {@param cost} is {@code null}
+	 */
+	public boolean isValidMetal(String metal) throws CustomException {
+		if (metal == null) {
+			LOGGER.log(Level.ERROR, "Problem with String metal -> " + null);
+			throw new CustomException();
+		}
+		LOGGER.log(Level.DEBUG, "Check -> " + metal);
+		return LOGGER.traceExit(
+				Arrays.stream(
+						Canvas.Metal.values()).anyMatch(
+						e -> e.name().equals(metal.toUpperCase().trim())));
 	}
 }

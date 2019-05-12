@@ -33,6 +33,7 @@ import xxx.necklaceservice.exception.CustomException;
  * @author Kisliuk Pavel Sergeevich
  * @see StoneChecker
  * @see GemstoneChecker
+ * @see CanvasChecker
  * @since 12.0
  */
 public interface IChecker {
