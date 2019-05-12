@@ -87,22 +87,22 @@ public class StoneChecker implements IChecker {
 			throw new CustomException();
 		}
 
-		if (!(isValidName(elementsString[NAME_PLACE].trim()))) {
+		if (!(isValidName(elementsString[NAME_PLACE]))) {
 			LOGGER.log(Level.WARN, "Incorrect name -> " + elementsString[NAME_PLACE]);
 			return false;
 		}
 
-		if (!(isValidId(elementsString[ID_PLACE].trim()))) {
+		if (!(isValidId(elementsString[ID_PLACE]))) {
 			LOGGER.log(Level.WARN, "Incorrect id -> " + elementsString[ID_PLACE]);
 			return false;
 		}
 
-		if (!(isValidWeight(elementsString[WEIGHT_PLACE].trim()))) {
+		if (!(isValidWeight(elementsString[WEIGHT_PLACE]))) {
 			LOGGER.log(Level.WARN, "Incorrect weight -> " + elementsString[WEIGHT_PLACE]);
 			return false;
 		}
 
-		if (!(isValidCost(elementsString[COST_PLACE].trim()))) {
+		if (!(isValidCost(elementsString[COST_PLACE]))) {
 			LOGGER.log(Level.WARN, "Incorrect cost -> " + elementsString[COST_PLACE]);
 			return false;
 		}
@@ -124,7 +124,7 @@ public class StoneChecker implements IChecker {
 			throw new CustomException();
 		}
 		LOGGER.log(Level.DEBUG, "Check -> " + name);
-		return LOGGER.traceExit(name.matches("[a-zA-Z]+"));
+		return LOGGER.traceExit(name.trim().matches("[a-zA-Z]+"));
 	}
 
 	/**
@@ -141,7 +141,7 @@ public class StoneChecker implements IChecker {
 			throw new CustomException();
 		}
 		LOGGER.log(Level.DEBUG, "Check -> " + id);
-		return LOGGER.traceExit(id.matches("[a-zA-Z]+\\d+"));
+		return LOGGER.traceExit(id.trim().matches("[a-zA-Z]+\\d+"));
 	}
 
 	/**
@@ -158,7 +158,7 @@ public class StoneChecker implements IChecker {
 			throw new CustomException();
 		}
 		LOGGER.log(Level.DEBUG, "Check -> " + weight);
-		return LOGGER.traceExit(isValidUnsignedDouble(weight));
+		return LOGGER.traceExit(isValidUnsignedDouble(weight.trim()));
 	}
 
 	/**
@@ -175,6 +175,6 @@ public class StoneChecker implements IChecker {
 			throw new CustomException();
 		}
 		LOGGER.log(Level.DEBUG, "Check -> " + cost);
-		return LOGGER.traceExit(isValidUnsignedDouble(cost));
+		return LOGGER.traceExit(isValidUnsignedDouble(cost.trim()));
 	}
 }
