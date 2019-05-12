@@ -32,6 +32,7 @@ import xxx.necklaceservice.exception.CustomException;
  * array of {@code String}
  * @author Kisliuk Pavel Sergeevich
  * @see StoneChecker
+ * @see GemstoneChecker
  * @since 12.0
  */
 public interface IChecker {
