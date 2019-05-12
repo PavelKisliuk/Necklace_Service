@@ -39,7 +39,11 @@ import java.util.Arrays;
  * @author Kisliuk Pavel Sergeevich
  * @see IChecker
  * @see StoneChecker
- * @see xxx.necklaceservice.model.Gemstone
+ * @see GemstoneChecker
+ * @see CanvasChecker
+ * @see NecklaceElementChecker
+ * @see NecklaceChecker
+ * @see Gemstone
  * @since 12.0
  */
 public class GemstoneChecker extends StoneChecker implements IChecker {

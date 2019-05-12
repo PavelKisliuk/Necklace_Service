@@ -34,13 +34,24 @@ import java.util.Arrays;
 
 /**
  * Checker of {@code NecklaceElement} implementation of the {@code IChecker} interface.
+ *
  * @author Kisliuk Pavel Sergeevich
  * @see IChecker
- * @see xxx.necklaceservice.model.Stone
+ * @see StoneChecker
+ * @see GemstoneChecker
+ * @see CanvasChecker
+ * @see NecklaceElementChecker
+ * @see NecklaceChecker
+ * @see xxx.necklaceservice.model.NecklaceElement
  * @since 12.0
  */
 public class NecklaceElementChecker implements IChecker {
 	private static final Logger LOGGER = LogManager.getLogger();
+
+	/**
+	 * Represent a minimal quantity elements {@code NecklaceElement}
+	 */
+	public static final int MIN_ELEMENTS_QUANTITY = 2;
 
 	/**
 	 * Represent a number of element of {@code NecklaceElement} {@code canvas} in {@code String}
@@ -57,15 +68,16 @@ public class NecklaceElementChecker implements IChecker {
 	/**
 	 * Return {@code true} if all element's of {@param elementsString} are valid,
 	 * else return {@code false}
+	 *
 	 * @param elementsString is array of {@code String} for validation
 	 * @return {@code true} if all element's of {@param elementsString} are valid
 	 * @throws CustomException if {@param elementsString} contain wrong quantity of element's
-	 * or {@code null}
+	 *                         or {@code null}
 	 */
 	@Override
 	public boolean isValid(String[] elementsString) throws CustomException {
 		if ((elementsString == null) ||
-				elementsString.length < 2) {
+				elementsString.length < MIN_ELEMENTS_QUANTITY) {
 			LOGGER.log(Level.ERROR, "Problem with elementsString -> " + Arrays.toString(elementsString));
 			throw new CustomException();
 		}
@@ -87,6 +99,7 @@ public class NecklaceElementChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param canvas} is correct for assignment
 	 * to field {@code canvas} of {@code NecklaceElement}, else return {@code false}
+	 *
 	 * @param canvas is {@code String} representation of {@code NecklaceElement} field {@code canvas}
 	 * @return {@code true} if {@param canvas} is correct for assignment
 	 * to field {@code canvas} of {@code NecklaceElement}
@@ -104,6 +117,7 @@ public class NecklaceElementChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param stonesGroup} is correct for assignment
 	 * to field {@code stonesGroup} of {@code NecklaceElement}, else return {@code false}
+	 *
 	 * @param stonesGroup is {@code String} representation of {@code NecklaceElement} field {@code stonesGroup}
 	 * @return {@code true} if {@param stonesGroup} is correct for assignment
 	 * to field {@code stonesGroup} of {@code NecklaceElement}
@@ -122,6 +136,7 @@ public class NecklaceElementChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param stonesGroup} is correct for assignment
 	 * to field {@code stonesGroup} of {@code NecklaceElement}, else return {@code false}
+	 *
 	 * @param stonesGroup is {@code String} representation of {@code NecklaceElement} field {@code stonesGroup}
 	 * @return {@code true} if {@param stonesGroup} is correct for assignment
 	 * to field {@code stonesGroup} of {@code NecklaceElement}
@@ -135,7 +150,7 @@ public class NecklaceElementChecker implements IChecker {
 		LOGGER.log(Level.DEBUG, "Check -> " + Arrays.toString(stonesGroup));
 
 		int i = 0;
-		while ((i++) < (stonesGroup.length - 1)) {
+		while (i < stonesGroup.length) {
 			String[] splitedStone = stonesGroup[i].split("-");
 
 			if (!((splitedStone.length != 4) ?
@@ -143,6 +158,7 @@ public class NecklaceElementChecker implements IChecker {
 					(new StoneChecker().isValid(splitedStone)))) {
 				return LOGGER.traceExit(false);
 			}
+			i++;
 		}
 		return LOGGER.traceExit(true);
 	}

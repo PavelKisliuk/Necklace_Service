@@ -35,9 +35,15 @@ import java.util.Arrays;
 
 /**
  * Checker of {@code Canvas} implementation of the {@code IChecker} interface.
+ *
  * @author Kisliuk Pavel Sergeevich
  * @see IChecker
- * @see xxx.necklaceservice.model.Stone
+ * @see StoneChecker
+ * @see GemstoneChecker
+ * @see CanvasChecker
+ * @see NecklaceElementChecker
+ * @see NecklaceChecker
+ * @see Canvas
  * @since 12.0
  */
 public class CanvasChecker implements IChecker {
@@ -76,10 +82,11 @@ public class CanvasChecker implements IChecker {
 	/**
 	 * Return {@code true} if all element's of {@param elementsString} are valid,
 	 * else return {@code false}
+	 *
 	 * @param elementsString is array of {@code String} for validation
 	 * @return {@code true} if all element's of {@param elementsString} are valid
 	 * @throws CustomException if {@param elementsString} contain wrong quantity of element's
-	 * or {@code null}
+	 *                         or {@code null}
 	 */
 	@Override
 	public boolean isValid(String[] elementsString) throws CustomException {
@@ -115,6 +122,7 @@ public class CanvasChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param id} is correct for assignment
 	 * to field {@code idCanvas} of {@code Canvas}, else return {@code false}
+	 *
 	 * @param id is {@code String} representation of {@code Canvas} field {@code idCanvas}
 	 * @return {@code true} if {@param id} is correct for assignment
 	 * to field {@code idCanvas} of {@code Canvas}
@@ -132,6 +140,7 @@ public class CanvasChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param weight} is correct for assignment
 	 * to field {@code grWeight} of {@code Canvas}, else return {@code false}
+	 *
 	 * @param weight is {@code String} representation of {@code Canvas} field {@code grWeight}
 	 * @return {@code true} if {@param weight} is correct for assignment
 	 * to field {@code grWeight} of {@code Canvas}
@@ -149,6 +158,7 @@ public class CanvasChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param cost} is correct for assignment
 	 * to field {@code costD} of {@code Canvas}, else return {@code false}
+	 *
 	 * @param cost is {@code String} representation of {@code Canvas} field {@code costD}
 	 * @return {@code true} if {@param cost} is correct for assignment
 	 * to field {@code costD} of {@code Canvas}
@@ -166,6 +176,7 @@ public class CanvasChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param metal} is correct for assignment
 	 * to field {@code metal} of {@code Canvas}, else return {@code false}
+	 *
 	 * @param metal is {@code String} representation of {@code Canvas} field {@code metal}
 	 * @return {@code true} if {@param metal} is correct for assignment
 	 * to field {@code metal} of {@code Canvas}

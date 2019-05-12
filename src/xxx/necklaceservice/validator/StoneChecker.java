@@ -34,8 +34,14 @@ import java.util.Arrays;
 
 /**
  * Checker of {@code Stone} implementation of the {@code IChecker} interface.
+ *
  * @author Kisliuk Pavel Sergeevich
  * @see IChecker
+ * @see StoneChecker
+ * @see GemstoneChecker
+ * @see CanvasChecker
+ * @see NecklaceElementChecker
+ * @see NecklaceChecker
  * @see xxx.necklaceservice.model.Stone
  * @since 12.0
  */
@@ -74,10 +80,11 @@ public class StoneChecker implements IChecker {
 	/**
 	 * Return {@code true} if all element's of {@param elementsString} are valid,
 	 * else return {@code false}
+	 *
 	 * @param elementsString is array of {@code String} for validation
 	 * @return {@code true} if all element's of {@param elementsString} are valid
 	 * @throws CustomException if {@param elementsString} contain wrong quantity of element's
-	 * or {@code null}
+	 *                         or {@code null}
 	 */
 	@Override
 	public boolean isValid(String[] elementsString) throws CustomException {
@@ -113,6 +120,7 @@ public class StoneChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param name} is correct for assignment
 	 * to field {@code name} of {@code Stone}, else return {@code false}
+	 *
 	 * @param name is {@code String} representation of {@code Stone} field {@code name}
 	 * @return {@code true} if {@param name} is correct for assignment
 	 * to field {@code name} of {@code Stone}
@@ -130,6 +138,7 @@ public class StoneChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param id} is correct for assignment
 	 * to field {@code idStone} of {@code Stone}, else return {@code false}
+	 *
 	 * @param id is {@code String} representation of {@code Stone} field {@code idStone}
 	 * @return {@code true} if {@param id} is correct for assignment
 	 * to field {@code idStone} of {@code Stone}
@@ -147,6 +156,7 @@ public class StoneChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param weight} is correct for assignment
 	 * to field {@code ctWeight} of {@code Stone}, else return {@code false}
+	 *
 	 * @param weight is {@code String} representation of {@code Stone} field {@code ctWeight}
 	 * @return {@code true} if {@param weight} is correct for assignment
 	 * to field {@code ctWeight} of {@code Stone}
@@ -164,6 +174,7 @@ public class StoneChecker implements IChecker {
 	/**
 	 * Return {@code true} if {@param cost} is correct for assignment
 	 * to field {@code costD} of {@code Stone}, else return {@code false}
+	 *
 	 * @param cost is {@code String} representation of {@code Stone} field {@code costD}
 	 * @return {@code true} if {@param cost} is correct for assignment
 	 * to field {@code costD} of {@code Stone}
