@@ -87,22 +87,22 @@ public class StoneChecker implements IChecker {
 			throw new CustomException();
 		}
 
-		if (!(isValidName(elementsString[NAME_PLACE]))) {
+		if (!(isValidName(elementsString[NAME_PLACE].trim()))) {
 			LOGGER.log(Level.WARN, "Incorrect name -> " + elementsString[NAME_PLACE]);
 			return false;
 		}
 
-		if (!(isValidId(elementsString[ID_PLACE]))) {
+		if (!(isValidId(elementsString[ID_PLACE].trim()))) {
 			LOGGER.log(Level.WARN, "Incorrect id -> " + elementsString[ID_PLACE]);
 			return false;
 		}
 
-		if (!(isValidWeight(elementsString[WEIGHT_PLACE]))) {
+		if (!(isValidWeight(elementsString[WEIGHT_PLACE].trim()))) {
 			LOGGER.log(Level.WARN, "Incorrect weight -> " + elementsString[WEIGHT_PLACE]);
 			return false;
 		}
 
-		if (!(isValidCost(elementsString[COST_PLACE]))) {
+		if (!(isValidCost(elementsString[COST_PLACE].trim()))) {
 			LOGGER.log(Level.WARN, "Incorrect cost -> " + elementsString[COST_PLACE]);
 			return false;
 		}
