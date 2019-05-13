@@ -25,8 +25,6 @@
 
 package xxx.pavelkisliuk.necklaceservice.validator;
 
-import xxx.pavelkisliuk.necklaceservice.exception.CustomException;
-
 /**
  * The {@code IChecker} interface provide method for validation data from
  * array of {@code String}
@@ -43,7 +41,7 @@ import xxx.pavelkisliuk.necklaceservice.exception.CustomException;
 public interface IChecker {
 	/**
 	 * String represent's pattern for regular expression for validation
-	 * value as double
+	 * value as unsigned double
 	 */
 	String UNSIGNED_DOUBLE_PATTERN = "\\d+(\\.\\d+)?";
 
@@ -54,9 +52,8 @@ public interface IChecker {
 	 *
 	 * @param elementsString is array of {@code String} for validation
 	 * @return {@code true} if all element's of {@param elementsString} are valid
-	 * @throws CustomException if {@param elementsString} contain {@code null}
 	 */
-	boolean isValid(String[] elementsString) throws CustomException;
+	boolean isValid(String[] elementsString);
 
 	/**
 	 * Return {@code true} if {@param unsignedDouble} contain unsigned double,

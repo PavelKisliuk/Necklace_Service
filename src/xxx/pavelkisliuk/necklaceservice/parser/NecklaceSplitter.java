@@ -28,7 +28,6 @@ package xxx.pavelkisliuk.necklaceservice.parser;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import xxx.pavelkisliuk.necklaceservice.exception.CustomException;
 import xxx.pavelkisliuk.necklaceservice.model.Necklace;
 
 import java.util.ArrayList;
@@ -52,13 +51,12 @@ public class NecklaceSplitter implements ISplitter {
 	 *
 	 * @param stringList represent {@code List for separating}
 	 * @return array of separated data
-	 * @throws CustomException if {@param stringList} is {@code null}
 	 */
 	@Override
-	public String[] split(List<String> stringList) throws CustomException {
+	public String[] split(List<String> stringList) {
 		if (stringList == null) {
-			LOGGER.log(Level.FATAL, ("Problem with stringList -> " + null));
-			throw new CustomException();
+			LOGGER.log(Level.ERROR, ("Problem with stringList -> " + null));
+			return LOGGER.traceExit(new String[0]);
 		}
 		if (stringList.size() == 0) {
 			LOGGER.log(Level.ERROR, "stringList is empty.");

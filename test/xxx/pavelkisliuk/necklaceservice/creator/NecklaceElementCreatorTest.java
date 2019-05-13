@@ -1,20 +1,18 @@
 package xxx.pavelkisliuk.necklaceservice.creator;
 
 import org.testng.annotations.Test;
-import xxx.pavelkisliuk.necklaceservice.creator.NecklaceElementCreator;
-import xxx.pavelkisliuk.necklaceservice.exception.CustomException;
 import xxx.pavelkisliuk.necklaceservice.model.Canvas;
 import xxx.pavelkisliuk.necklaceservice.model.Gemstone;
 import xxx.pavelkisliuk.necklaceservice.model.NecklaceElement;
 
 import java.math.BigDecimal;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
 
 public class NecklaceElementCreatorTest {
 
 	@Test
-	public void testCreate() throws CustomException {
+	public void testCreate() {
 		NecklaceElement necklaceElement = new NecklaceElement();
 		Canvas canvas = new Canvas();
 		canvas.setCanvasId("canvas00001");

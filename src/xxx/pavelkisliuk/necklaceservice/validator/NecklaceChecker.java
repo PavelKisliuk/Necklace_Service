@@ -28,7 +28,6 @@ package xxx.pavelkisliuk.necklaceservice.validator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import xxx.pavelkisliuk.necklaceservice.exception.CustomException;
 import xxx.pavelkisliuk.necklaceservice.model.Necklace;
 
 import java.util.Arrays;
@@ -78,13 +77,12 @@ public class NecklaceChecker implements IChecker {
 	 *
 	 * @param elementsString is array of {@code String} for validation
 	 * @return {@code true} if all element's of {@param elementsString} are valid
-	 * @throws CustomException if {@param elementsString} contain {@code null}
 	 */
 	@Override
-	public boolean isValid(String[] elementsString) throws CustomException {
+	public boolean isValid(String[] elementsString) {
 		if (elementsString == null) {
-			LOGGER.log(Level.ERROR, "Problem with elementsString -> " + null);
-			throw new CustomException();
+			LOGGER.log(Level.WARN, "Problem with elementsString -> " + null);
+			return LOGGER.traceExit(false);
 		}
 
 		if (elementsString.length != ELEMENTS_QUANTITY) {
@@ -119,12 +117,11 @@ public class NecklaceChecker implements IChecker {
 	 * @param id is {@code String} representation of {@code Necklace} field {@code idSNecklace}
 	 * @return {@code true} if {@param id} is correct for assignment
 	 * to field {@code idNecklace} of {@code Necklace}
-	 * @throws CustomException if {@param id} is {@code null}
 	 */
-	public boolean isValidId(String id) throws CustomException {
+	public boolean isValidId(String id) {
 		if (id == null) {
-			LOGGER.log(Level.ERROR, "Problem with String id -> " + null);
-			throw new CustomException();
+			LOGGER.log(Level.WARN, "Problem with String id -> " + null);
+			return LOGGER.traceExit(false);
 		}
 		LOGGER.log(Level.DEBUG, "Check -> " + id);
 		return LOGGER.traceExit(id.trim().matches("[a-zA-Z]+\\d+"));
@@ -139,12 +136,11 @@ public class NecklaceChecker implements IChecker {
 	 *                              {@code necklaceElementsGroup}
 	 * @return {@code true} if {@param necklaceElementsGroup} is correct for assignment
 	 * to field {@code necklaceElementsGroup} of {@code Necklace}
-	 * @throws CustomException if {@param necklaceElementsGroup} is {@code null}
 	 */
-	public boolean isValidNecklaceElementsList(String necklaceElementsGroup) throws CustomException {
+	public boolean isValidNecklaceElementsList(String necklaceElementsGroup) {
 		if (necklaceElementsGroup == null) {
-			LOGGER.log(Level.ERROR, "Problem with String canvas -> " + null);
-			throw new CustomException();
+			LOGGER.log(Level.WARN, "Problem with String canvas -> " + null);
+			return LOGGER.traceExit(false);
 		}
 		LOGGER.log(Level.DEBUG, "Check -> " + necklaceElementsGroup);
 		return LOGGER.traceExit(isValidNecklaceElementsList(necklaceElementsGroup.split("~")));
@@ -159,12 +155,11 @@ public class NecklaceChecker implements IChecker {
 	 *                              {@code necklaceElementsGroup}
 	 * @return {@code true} if {@param necklaceElementsGroup} is correct for assignment
 	 * to field {@code necklaceElementsGroup} of {@code Necklace}
-	 * @throws CustomException if {@param necklaceElementsGroup} is {@code null}
 	 */
-	public boolean isValidNecklaceElementsList(String[] necklaceElementsGroup) throws CustomException {
+	public boolean isValidNecklaceElementsList(String[] necklaceElementsGroup) {
 		if (necklaceElementsGroup == null) {
-			LOGGER.log(Level.ERROR, "Problem with String necklaceElementsList -> " + null);
-			throw new CustomException();
+			LOGGER.log(Level.WARN, "Problem with String necklaceElementsList -> " + null);
+			return LOGGER.traceExit(false);
 		}
 		LOGGER.log(Level.DEBUG, "Check -> " + Arrays.toString(necklaceElementsGroup));
 
@@ -188,12 +183,11 @@ public class NecklaceChecker implements IChecker {
 	 * @param cost is {@code String} representation of {@code Necklace} field {@code costD}
 	 * @return {@code true} if {@param cost} is correct for assignment
 	 * to field {@code costD} of {@code Necklace}
-	 * @throws CustomException if {@param cost} is {@code null}
 	 */
-	public boolean isValidCost(String cost) throws CustomException {
+	public boolean isValidCost(String cost) {
 		if (cost == null) {
-			LOGGER.log(Level.ERROR, "Problem with String cost -> " + null);
-			throw new CustomException();
+			LOGGER.log(Level.WARN, "Problem with String cost -> " + null);
+			return LOGGER.traceExit(false);
 		}
 		LOGGER.log(Level.DEBUG, "Check -> " + cost);
 		return LOGGER.traceExit(isValidUnsignedDouble(cost.trim()));

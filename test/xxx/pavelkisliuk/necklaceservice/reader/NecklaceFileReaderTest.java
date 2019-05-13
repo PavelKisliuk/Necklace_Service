@@ -2,12 +2,11 @@ package xxx.pavelkisliuk.necklaceservice.reader;
 
 import org.testng.annotations.Test;
 import xxx.pavelkisliuk.necklaceservice.exception.CustomException;
-import xxx.pavelkisliuk.necklaceservice.reader.NecklaceFileReader;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
 
 public class NecklaceFileReaderTest {
 	private NecklaceFileReader necklaceFileReader = new NecklaceFileReader();

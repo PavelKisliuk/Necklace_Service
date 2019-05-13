@@ -28,7 +28,6 @@ package xxx.pavelkisliuk.necklaceservice.validator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import xxx.pavelkisliuk.necklaceservice.exception.CustomException;
 import xxx.pavelkisliuk.necklaceservice.model.Gemstone;
 
 import java.util.Arrays;
@@ -79,13 +78,12 @@ public class GemstoneChecker extends StoneChecker implements IChecker {
 	 *
 	 * @param elementsString is array of {@code String} for validation
 	 * @return {@code true} if all element's of {@param elementsString} are valid
-	 * @throws CustomException if {@param elementsString} contain {@code null}
 	 */
 	@Override
-	public boolean isValid(String[] elementsString) throws CustomException {
+	public boolean isValid(String[] elementsString) {
 		if (elementsString == null) {
-			LOGGER.log(Level.ERROR, "Problem with elementsString -> " + null);
-			throw new CustomException();
+			LOGGER.log(Level.WARN, "Problem with elementsString -> " + null);
+			return LOGGER.traceExit(false);
 		}
 
 		if (elementsString.length != ELEMENTS_QUANTITY) {
@@ -123,12 +121,11 @@ public class GemstoneChecker extends StoneChecker implements IChecker {
 	 * @param curiosity is {@code String} representation of {@code Stone} field {@code curiosityLevel}
 	 * @return {@code true} if {@param curiosity} is correct for assignment
 	 * to field {@code curiosityLevel} of {@code Stone}
-	 * @throws CustomException if {@param curiosity} is {@code null}
 	 */
-	public boolean isValidCuriosity(String curiosity) throws CustomException {
+	public boolean isValidCuriosity(String curiosity) {
 		if (curiosity == null) {
-			LOGGER.log(Level.ERROR, "Problem with String curiosity -> " + null);
-			throw new CustomException();
+			LOGGER.log(Level.WARN, "Problem with String curiosity -> " + null);
+			return LOGGER.traceExit(false);
 		}
 		LOGGER.log(Level.DEBUG, "Check -> " + curiosity);
 		return LOGGER.traceExit(
@@ -145,12 +142,11 @@ public class GemstoneChecker extends StoneChecker implements IChecker {
 	 * @param hardness is {@code String} representation of {@code Stone} field {@code hardnessLevel}
 	 * @return {@code true} if {@param hardness} is correct for assignment
 	 * to field {@code hardnessLevel} of {@code Stone}
-	 * @throws CustomException if {@param hardness} is {@code null}
 	 */
-	public boolean isValidHardness(String hardness) throws CustomException {
+	public boolean isValidHardness(String hardness) {
 		if (hardness == null) {
-			LOGGER.log(Level.ERROR, "Problem with String hardness -> " + null);
-			throw new CustomException();
+			LOGGER.log(Level.WARN, "Problem with String hardness -> " + null);
+			return LOGGER.traceExit(false);
 		}
 		LOGGER.log(Level.DEBUG, "Check -> " + hardness);
 		return LOGGER.traceExit(
@@ -167,12 +163,11 @@ public class GemstoneChecker extends StoneChecker implements IChecker {
 	 * @param opacity is {@code String} representation of {@code Stone} field {@code opacity}
 	 * @return {@code true} if {@param opacity} is correct for assignment
 	 * to field {@code opacity} of {@code Stone}
-	 * @throws CustomException if {@param opacity} is {@code null}
 	 */
-	public boolean isValidOpacity(String opacity) throws CustomException {
+	public boolean isValidOpacity(String opacity) {
 		if (opacity == null) {
-			LOGGER.log(Level.ERROR, "Problem with String opacity -> " + null);
-			throw new CustomException();
+			LOGGER.log(Level.WARN, "Problem with String opacity -> " + null);
+			return LOGGER.traceExit(false);
 		}
 		LOGGER.log(Level.DEBUG, "Check -> " + opacity);
 		return LOGGER.traceExit((isValidUnsignedDouble(opacity.trim())) &&

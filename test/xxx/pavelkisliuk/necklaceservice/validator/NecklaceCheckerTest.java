@@ -1,26 +1,25 @@
 package xxx.pavelkisliuk.necklaceservice.validator;
 
 import org.testng.annotations.Test;
-import xxx.pavelkisliuk.necklaceservice.exception.CustomException;
-import xxx.pavelkisliuk.necklaceservice.validator.NecklaceChecker;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 public class NecklaceCheckerTest {
 	private NecklaceChecker necklaceChecker = new NecklaceChecker();
 
-	@Test(expectedExceptions = CustomException.class)
-	public void testIsValidNull() throws CustomException {
-		necklaceChecker.isValid(null);
+	@Test
+	public void testIsValidNull() {
+		assertFalse(necklaceChecker.isValid(null));
 	}
 
 	@Test
-	public void testIsValidEmpty() throws CustomException {
+	public void testIsValidEmpty() {
 		assertFalse(necklaceChecker.isValid(new String[0]));
 	}
 
 	@Test
-	public void testIsValidCorrect() throws CustomException {
+	public void testIsValidCorrect() {
 		String[] array = {"necklace00001",
 				"canvas00001-150-200-ALBUM_AURUM#Emerald-Emerald00001-100-500-MEDIUM-HARD-0.6",
 				"3080"};
@@ -28,7 +27,7 @@ public class NecklaceCheckerTest {
 	}
 
 	@Test
-	public void testIsValidIncorrectId() throws CustomException {
+	public void testIsValidIncorrectId() {
 		String[] array = {"necklace-00001",
 				"canvas00001-150-200-ALBUM_AURUM#Emerald-Emerald00001-100-500-MEDIUM-HARD-0.6",
 				"3080"};
@@ -36,7 +35,7 @@ public class NecklaceCheckerTest {
 	}
 
 	@Test
-	public void testIsValidIncorrectList() throws CustomException {
+	public void testIsValidIncorrectList() {
 		String[] array = {"necklace00001",
 				"&canvas00001-150-200-ALBUM_AURUM#Emerald-Emerald00001-100-500-MEDIUM-HARD-0.6&",
 				"3080"};
@@ -44,30 +43,30 @@ public class NecklaceCheckerTest {
 	}
 
 	@Test
-	public void testIsValidIncorrectCost() throws CustomException {
+	public void testIsValidIncorrectCost() {
 		String[] array = {"necklace00001",
 				"canvas00001-150-200-ALBUM_AURUM#Emerald-Emerald00001-100-500-MEDIUM-HARD-0.6",
 				"&3080"};
 		assertFalse(necklaceChecker.isValid(array));
 	}
 
-	@Test(expectedExceptions = CustomException.class)
-	public void testIsValidIdNull() throws CustomException {
-		necklaceChecker.isValidId(null);
+	@Test
+	public void testIsValidIdNull() {
+		assertFalse(necklaceChecker.isValidId(null));
 	}
 
 	@Test
-	public void testIsValidIdCorrect() throws CustomException {
+	public void testIsValidIdCorrect() {
 		assertTrue(necklaceChecker.isValidId("necklace00001"));
 	}
 
 	@Test
-	public void testIsValidIdIncorrect() throws CustomException {
+	public void testIsValidIdIncorrect() {
 		assertFalse(necklaceChecker.isValidId("necklace00001&"));
 	}
 
 	@Test
-	public void testIsValidNecklaceElementsListCorrectWithString() throws CustomException {
+	public void testIsValidNecklaceElementsListCorrectWithString() {
 		String necklaceElementsGroup = "canvas00003-100-175-ALBUM_AURUM\n" +
 				"#Diamond-Diamond00006-10-100-RARE-HARD-0.45\n" +
 				"#Diamond-Diamond00007-10-300-RARE-HARD-0.08\n" +
@@ -84,7 +83,7 @@ public class NecklaceCheckerTest {
 	}
 
 	@Test
-	public void testIsValidNecklaceElementsListIncorrectWithString() throws CustomException {
+	public void testIsValidNecklaceElementsListIncorrectWithString() {
 		String necklaceElementsGroup = "&canvas00003-100-175-ALBUM_AURUM\n" +
 				"#Diamond-Diamond00006-10-100-RARE-HARD-0.45\n" +
 				"#Diamond-Diamond00007-10-300-RARE-HARD-0.08\n" +
@@ -101,51 +100,51 @@ public class NecklaceCheckerTest {
 	}
 
 	@Test
-	public void testIsValidNecklaceElementsListCorrectWithArray() throws CustomException {
+	public void testIsValidNecklaceElementsListCorrectWithArray() {
 		String[] necklaceElementsGroup = {"canvas00003-100-175-ALBUM_AURUM\n" +
 				"#Diamond-Diamond00006-10-100-RARE-HARD-0.45\n" +
 				"#Diamond-Diamond00007-10-300-RARE-HARD-0.08\n" +
 				"#Diamond-Diamond00008-10-190-RARE-HARD-0.21\n",
 				"canvas00001-150-200-ALBUM_AURUM\n" +
-				"#Emerald-Emerald00001-100-500-MEDIUM-HARD-0.6\n" +
-				"#Diamond-Diamond00001-10-200-RARE-HARD-0.12\n" +
-				"#Diamond-Diamond00002-10-190-RARE-HARD-0.21\n",
+						"#Emerald-Emerald00001-100-500-MEDIUM-HARD-0.6\n" +
+						"#Diamond-Diamond00001-10-200-RARE-HARD-0.12\n" +
+						"#Diamond-Diamond00002-10-190-RARE-HARD-0.21\n",
 				"canvas00002-100-175-ALBUM_AURUM\n" +
-				"#Diamond-Diamond00003-10-200-RARE-HARD-0.15\n" +
-				"#Diamond-Diamond00004-10-200-RARE-HARD-0.12\n" +
-				"#Diamond-Diamond00005-10-190-RARE-HARD-0.21"};
+						"#Diamond-Diamond00003-10-200-RARE-HARD-0.15\n" +
+						"#Diamond-Diamond00004-10-200-RARE-HARD-0.12\n" +
+						"#Diamond-Diamond00005-10-190-RARE-HARD-0.21"};
 		assertTrue(necklaceChecker.isValidNecklaceElementsList(necklaceElementsGroup));
 	}
 
 	@Test
-	public void testIsValidNecklaceElementsListIncorrectWithArray() throws CustomException {
+	public void testIsValidNecklaceElementsListIncorrectWithArray() {
 		String[] necklaceElementsGroup = {"canvas00003-100-175-ALBUM_AURUM\n" +
 				"#Diamond-Diamond00006-10-100-RARE-HARD-0.45\n" +
 				"#Diamond-Diamond00007-10-300-RARE-HARD-0.08\n" +
 				"#Diamond-Diamond00008-10-190-RARE-HARD-0.21\n",
 				"~canvas00001-150-200-ALBUM_AURUM\n" +
-				"#Emerald-Emerald00001-100-500-MEDIUM-HARD-0.6\n" +
-				"#Diamond-Diamond00001-10-200-RARE-HARD-0.12\n" +
-				"#Diamond-Diamond00002-10-190-RARE-HARD-0.21\n",
+						"#Emerald-Emerald00001-100-500-MEDIUM-HARD-0.6\n" +
+						"#Diamond-Diamond00001-10-200-RARE-HARD-0.12\n" +
+						"#Diamond-Diamond00002-10-190-RARE-HARD-0.21\n",
 				"~canvas00002-100-175-ALBUM_AURUM\n" +
-				"#Diamond-Diamond00003-10-200-RARE-HARD-0.15\n" +
-				"#Diamond-Diamond00004-10-200-RARE-HARD-0.12\n" +
-				"#Diamond-Diamond00005-10-190-RARE-HARD-0.21"};
+						"#Diamond-Diamond00003-10-200-RARE-HARD-0.15\n" +
+						"#Diamond-Diamond00004-10-200-RARE-HARD-0.12\n" +
+						"#Diamond-Diamond00005-10-190-RARE-HARD-0.21"};
 		assertFalse(necklaceChecker.isValidNecklaceElementsList(necklaceElementsGroup));
 	}
 
-	@Test(expectedExceptions = CustomException.class)
-	public void testIsValidCostNull() throws CustomException {
-		necklaceChecker.isValidCost(null);
+	@Test
+	public void testIsValidCostNull() {
+		assertFalse(necklaceChecker.isValidCost(null));
 	}
 
 	@Test
-	public void testIsValidCostCorrect() throws CustomException {
+	public void testIsValidCostCorrect() {
 		assertTrue(necklaceChecker.isValidCost("100.2"));
 	}
 
 	@Test
-	public void testIsValidCostIncorrect() throws CustomException {
+	public void testIsValidCostIncorrect() {
 		assertFalse(necklaceChecker.isValidCost("-100.2"));
 	}
 }

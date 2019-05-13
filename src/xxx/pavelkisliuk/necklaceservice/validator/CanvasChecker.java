@@ -28,7 +28,6 @@ package xxx.pavelkisliuk.necklaceservice.validator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import xxx.pavelkisliuk.necklaceservice.exception.CustomException;
 import xxx.pavelkisliuk.necklaceservice.model.Canvas;
 
 import java.util.Arrays;
@@ -86,13 +85,12 @@ public class CanvasChecker implements IChecker {
 	 *
 	 * @param elementsString is array of {@code String} for validation
 	 * @return {@code true} if all element's of {@param elementsString} are valid
-	 * @throws CustomException if {@param elementsString} contain {@code null}
 	 */
 	@Override
-	public boolean isValid(String[] elementsString) throws CustomException {
+	public boolean isValid(String[] elementsString) {
 		if (elementsString == null) {
-			LOGGER.log(Level.ERROR, "Problem with elementsString -> " + null);
-			throw new CustomException();
+			LOGGER.log(Level.WARN, "Problem with elementsString -> " + null);
+			return LOGGER.traceExit(false);
 		}
 
 		if (elementsString.length != ELEMENTS_QUANTITY) {
@@ -131,12 +129,11 @@ public class CanvasChecker implements IChecker {
 	 * @param id is {@code String} representation of {@code Canvas} field {@code idCanvas}
 	 * @return {@code true} if {@param id} is correct for assignment
 	 * to field {@code idCanvas} of {@code Canvas}
-	 * @throws CustomException if {@param id} is {@code null}
 	 */
-	public boolean isValidId(String id) throws CustomException {
+	public boolean isValidId(String id) {
 		if (id == null) {
-			LOGGER.log(Level.ERROR, "Problem with String id -> " + null);
-			throw new CustomException();
+			LOGGER.log(Level.WARN, ("Problem with String id -> " + null));
+			return LOGGER.traceExit(false);
 		}
 		LOGGER.log(Level.DEBUG, "Check -> " + id);
 		return LOGGER.traceExit(id.trim().matches("[a-zA-Z]+\\d+"));
@@ -150,12 +147,11 @@ public class CanvasChecker implements IChecker {
 	 * @param weight is {@code String} representation of {@code Canvas} field {@code grWeight}
 	 * @return {@code true} if {@param weight} is correct for assignment
 	 * to field {@code grWeight} of {@code Canvas}
-	 * @throws CustomException if {@param weight} is {@code null}
 	 */
-	public boolean isValidWeight(String weight) throws CustomException {
+	public boolean isValidWeight(String weight) {
 		if (weight == null) {
-			LOGGER.log(Level.ERROR, "Problem with String weight -> " + null);
-			throw new CustomException();
+			LOGGER.log(Level.WARN, "Problem with String weight -> " + null);
+			return LOGGER.traceExit(false);
 		}
 		LOGGER.log(Level.DEBUG, "Check -> " + weight);
 		return LOGGER.traceExit(isValidUnsignedDouble(weight.trim()));
@@ -169,12 +165,11 @@ public class CanvasChecker implements IChecker {
 	 * @param cost is {@code String} representation of {@code Canvas} field {@code costD}
 	 * @return {@code true} if {@param cost} is correct for assignment
 	 * to field {@code costD} of {@code Canvas}
-	 * @throws CustomException if {@param cost} is {@code null}
 	 */
-	public boolean isValidCost(String cost) throws CustomException {
+	public boolean isValidCost(String cost) {
 		if (cost == null) {
-			LOGGER.log(Level.ERROR, "Problem with String cost -> " + null);
-			throw new CustomException();
+			LOGGER.log(Level.WARN, "Problem with String cost -> " + null);
+			return LOGGER.traceExit(false);
 		}
 		LOGGER.log(Level.DEBUG, "Check -> " + cost);
 		return LOGGER.traceExit(isValidUnsignedDouble(cost.trim()));
@@ -188,12 +183,11 @@ public class CanvasChecker implements IChecker {
 	 * @param metal is {@code String} representation of {@code Canvas} field {@code metal}
 	 * @return {@code true} if {@param metal} is correct for assignment
 	 * to field {@code metal} of {@code Canvas}
-	 * @throws CustomException if {@param cost} is {@code null}
 	 */
-	public boolean isValidMetal(String metal) throws CustomException {
+	public boolean isValidMetal(String metal) {
 		if (metal == null) {
-			LOGGER.log(Level.ERROR, "Problem with String metal -> " + null);
-			throw new CustomException();
+			LOGGER.log(Level.WARN, "Problem with String metal -> " + null);
+			return LOGGER.traceExit(false);
 		}
 		LOGGER.log(Level.DEBUG, "Check -> " + metal);
 		return LOGGER.traceExit(

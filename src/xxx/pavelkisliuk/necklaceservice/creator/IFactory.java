@@ -24,7 +24,6 @@
  */
 package xxx.pavelkisliuk.necklaceservice.creator;
 
-import xxx.pavelkisliuk.necklaceservice.exception.CustomException;
 import xxx.pavelkisliuk.necklaceservice.model.IProduct;
 
 /**
@@ -47,7 +46,6 @@ public interface IFactory {
 	 *
 	 * @param elementsString {@code String} representation of {@code IProduct}
 	 * @return instance of {@code IProduct}
-	 * @throws CustomException if {@param elementsString} is incorrect
 	 */
-	IProduct create(String[] elementsString) throws CustomException;
+	IProduct create(String[] elementsString);
 }

@@ -60,7 +60,6 @@ public class NecklaceFileReader {
 		if ((path == null) ||
 				(path.length() == 0) ||
 				(Files.notExists(Paths.get(path)))) {
-			LOGGER.log(Level.ERROR, ("Problem with String path -> " + path));
 			throw new CustomException();
 		}
 

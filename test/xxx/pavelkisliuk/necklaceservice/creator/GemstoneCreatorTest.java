@@ -1,18 +1,16 @@
 package xxx.pavelkisliuk.necklaceservice.creator;
 
 import org.testng.annotations.Test;
-import xxx.pavelkisliuk.necklaceservice.creator.GemstoneCreator;
-import xxx.pavelkisliuk.necklaceservice.exception.CustomException;
 import xxx.pavelkisliuk.necklaceservice.model.Gemstone;
 
 import java.math.BigDecimal;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
 
 public class GemstoneCreatorTest {
 
 	@Test
-	public void testCreate() throws CustomException {
+	public void testCreate() {
 		Gemstone stone = new Gemstone();
 		stone.setName("Emerald");
 		stone.setStoneId("Emerald00001");

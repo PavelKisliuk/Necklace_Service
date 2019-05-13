@@ -28,7 +28,6 @@ package xxx.pavelkisliuk.necklaceservice.creator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import xxx.pavelkisliuk.necklaceservice.exception.CustomException;
 import xxx.pavelkisliuk.necklaceservice.model.Gemstone;
 import xxx.pavelkisliuk.necklaceservice.model.IProduct;
 import xxx.pavelkisliuk.necklaceservice.validator.GemstoneChecker;
@@ -60,10 +59,9 @@ public class GemstoneCreator implements IFactory {
 	 *
 	 * @param elementsString {@code String} representation of {@code IProduct}
 	 * @return instance of {@code IProduct}
-	 * @throws CustomException if {@param elementsString} is incorrect
 	 */
 	@Override
-	public Gemstone create(String[] elementsString) throws CustomException {
+	public Gemstone create(String[] elementsString) {
 		if (!(new GemstoneChecker().isValid(elementsString))) {
 			LOGGER.log(Level.ERROR, ("Incorrect elementsString ->" + Arrays.toString(elementsString)));
 			return LOGGER.traceExit(new Gemstone());

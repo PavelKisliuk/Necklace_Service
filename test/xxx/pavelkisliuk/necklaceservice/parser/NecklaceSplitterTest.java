@@ -1,30 +1,27 @@
 package xxx.pavelkisliuk.necklaceservice.parser;
 
 import org.testng.annotations.Test;
-import xxx.pavelkisliuk.necklaceservice.exception.CustomException;
-import xxx.pavelkisliuk.necklaceservice.parser.ISplitter;
-import xxx.pavelkisliuk.necklaceservice.parser.NecklaceSplitter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
 
 public class NecklaceSplitterTest {
-	ISplitter iSplitter = new NecklaceSplitter();
+	private ISplitter iSplitter = new NecklaceSplitter();
 
-	@Test(expectedExceptions = CustomException.class)
-	public void testSplitNull() throws CustomException {
-		iSplitter.split(null);
+	@Test
+	public void testSplitNull() {
+		assertEquals(new String[0], iSplitter.split(null));
 	}
 
 	@Test
-	public void testSplitEmpty() throws CustomException {
+	public void testSplitEmpty() {
 		assertEquals(new String[0], iSplitter.split(new ArrayList<>()));
 	}
 
 	@Test
-	public void testSplit() throws CustomException {
+	public void testSplit() {
 		List<String> necklaceList = new ArrayList<>();
 		necklaceList.add("necklace00001");
 		necklaceList.add("&canvas00001-150-200-ALBUM_AURUM");

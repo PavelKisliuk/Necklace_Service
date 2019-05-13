@@ -25,8 +25,6 @@
 
 package xxx.pavelkisliuk.necklaceservice.parser;
 
-import xxx.pavelkisliuk.necklaceservice.exception.CustomException;
-
 import java.util.List;
 
 /**
@@ -41,7 +39,6 @@ public interface ISplitter {
 	/**
 	 * @param stringList represent {@code List for separating}
 	 * @return array of separated data
-	 * @throws CustomException if {@param stringList} is {@code null}
 	 */
-	String[] split(List<String> stringList) throws CustomException;
+	String[] split(List<String> stringList);
 }

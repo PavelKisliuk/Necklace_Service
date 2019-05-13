@@ -28,7 +28,6 @@ package xxx.pavelkisliuk.necklaceservice.validator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import xxx.pavelkisliuk.necklaceservice.exception.CustomException;
 import xxx.pavelkisliuk.necklaceservice.model.Stone;
 
 /**
@@ -83,13 +82,12 @@ public class StoneChecker implements IChecker {
 	 *
 	 * @param elementsString is array of {@code String} for validation
 	 * @return {@code true} if all element's of {@param elementsString} are valid
-	 * @throws CustomException if {@param elementsString} contain {@code null}
 	 */
 	@Override
-	public boolean isValid(String[] elementsString) throws CustomException {
+	public boolean isValid(String[] elementsString) {
 		if (elementsString == null) {
-			LOGGER.log(Level.ERROR, "Problem with elementsString -> " + null);
-			throw new CustomException();
+			LOGGER.log(Level.WARN, "Problem with elementsString -> " + null);
+			return LOGGER.traceExit(false);
 		}
 
 		if (elementsString.length != ELEMENTS_QUANTITY) {
@@ -128,12 +126,11 @@ public class StoneChecker implements IChecker {
 	 * @param name is {@code String} representation of {@code Stone} field {@code name}
 	 * @return {@code true} if {@param name} is correct for assignment
 	 * to field {@code name} of {@code Stone}
-	 * @throws CustomException if {@param name} is {@code null}
 	 */
-	public boolean isValidName(String name) throws CustomException {
+	public boolean isValidName(String name) {
 		if (name == null) {
-			LOGGER.log(Level.ERROR, "Problem with String name -> " + null);
-			throw new CustomException();
+			LOGGER.log(Level.WARN, "Problem with String name -> " + null);
+			return LOGGER.traceExit(false);
 		}
 		LOGGER.log(Level.DEBUG, "Check -> " + name);
 		return LOGGER.traceExit(name.trim().matches("[a-zA-Z]+"));
@@ -147,12 +144,11 @@ public class StoneChecker implements IChecker {
 	 * @param id is {@code String} representation of {@code Stone} field {@code idStone}
 	 * @return {@code true} if {@param id} is correct for assignment
 	 * to field {@code idStone} of {@code Stone}
-	 * @throws CustomException if {@param id} is {@code null}
 	 */
-	public boolean isValidId(String id) throws CustomException {
+	public boolean isValidId(String id) {
 		if (id == null) {
-			LOGGER.log(Level.ERROR, "Problem with String id -> " + null);
-			throw new CustomException();
+			LOGGER.log(Level.WARN, "Problem with String id -> " + null);
+			return LOGGER.traceExit(false);
 		}
 		LOGGER.log(Level.DEBUG, "Check -> " + id);
 		return LOGGER.traceExit(id.trim().matches("[a-zA-Z]+\\d+"));
@@ -166,12 +162,11 @@ public class StoneChecker implements IChecker {
 	 * @param weight is {@code String} representation of {@code Stone} field {@code ctWeight}
 	 * @return {@code true} if {@param weight} is correct for assignment
 	 * to field {@code ctWeight} of {@code Stone}
-	 * @throws CustomException if {@param weight} is {@code null}
 	 */
-	public boolean isValidWeight(String weight) throws CustomException {
+	public boolean isValidWeight(String weight) {
 		if (weight == null) {
-			LOGGER.log(Level.ERROR, "Problem with String weight -> " + null);
-			throw new CustomException();
+			LOGGER.log(Level.WARN, "Problem with String weight -> " + null);
+			return LOGGER.traceExit(false);
 		}
 		LOGGER.log(Level.DEBUG, "Check -> " + weight);
 		return LOGGER.traceExit(isValidUnsignedDouble(weight.trim()));
@@ -185,12 +180,11 @@ public class StoneChecker implements IChecker {
 	 * @param cost is {@code String} representation of {@code Stone} field {@code costD}
 	 * @return {@code true} if {@param cost} is correct for assignment
 	 * to field {@code costD} of {@code Stone}
-	 * @throws CustomException if {@param cost} is {@code null}
 	 */
-	public boolean isValidCost(String cost) throws CustomException {
+	public boolean isValidCost(String cost) {
 		if (cost == null) {
-			LOGGER.log(Level.ERROR, "Problem with String cost -> " + null);
-			throw new CustomException();
+			LOGGER.log(Level.WARN, "Problem with String cost -> " + null);
+			return LOGGER.traceExit(false);
 		}
 		LOGGER.log(Level.DEBUG, "Check -> " + cost);
 		return LOGGER.traceExit(isValidUnsignedDouble(cost.trim()));

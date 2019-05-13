@@ -1,111 +1,110 @@
 package xxx.pavelkisliuk.necklaceservice.validator;
 
 import org.testng.annotations.Test;
-import xxx.pavelkisliuk.necklaceservice.exception.CustomException;
-import xxx.pavelkisliuk.necklaceservice.validator.CanvasChecker;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 public class CanvasCheckerTest {
 	private CanvasChecker canvasChecker = new CanvasChecker();
 
-	@Test(expectedExceptions = CustomException.class)
-	public void testIsValidNull() throws CustomException {
-		canvasChecker.isValid(null);
+	@Test
+	public void testIsValidNull() {
+		assertFalse(canvasChecker.isValid(null));
 	}
 
 	@Test
-	public void testIsValidEmpty() throws CustomException {
+	public void testIsValidEmpty() {
 		assertFalse(canvasChecker.isValid(new String[0]));
 	}
 
 	@Test
-	public void testIsValidCorrect() throws CustomException {
+	public void testIsValidCorrect() {
 		String[] array = {"canvas00003", "10", "100", "ALBUM_AURUM"};
 		assertTrue(canvasChecker.isValid(array));
 	}
 
 	@Test
-	public void testIsValidIncorrectId() throws CustomException {
+	public void testIsValidIncorrectId() {
 		String[] array = {"canvas00003+", "10", "100", "ALBUM_AURUM"};
 		assertFalse(canvasChecker.isValid(array));
 	}
 
 	@Test
-	public void testIsValidIncorrectWeight() throws CustomException {
+	public void testIsValidIncorrectWeight() {
 		String[] array = {"canvas00003", "dsd", "100", "ALBUM_AURUM"};
 		assertFalse(canvasChecker.isValid(array));
 	}
 
 	@Test
-	public void testIsValidIncorrectCost() throws CustomException {
+	public void testIsValidIncorrectCost() {
 		String[] array = {"canvas00003", "10", "100+6", "ALBUM_AURUM"};
 		assertFalse(canvasChecker.isValid(array));
 	}
 
 	@Test
-	public void testIsValidIncorrectMetal() throws CustomException {
+	public void testIsValidIncorrectMetal() {
 		String[] array = {"canvas00003", "10", "100", "ALBUM"};
 		assertFalse(canvasChecker.isValid(array));
 	}
 
-	@Test(expectedExceptions = CustomException.class)
-	public void testIsValidIdNull() throws CustomException {
-		canvasChecker.isValidId(null);
+	@Test
+	public void testIsValidIdNull() {
+		assertFalse(canvasChecker.isValidId(null));
 	}
 
 	@Test
-	public void testIsValidIdCorrect() throws CustomException {
+	public void testIsValidIdCorrect() {
 		assertTrue(canvasChecker.isValidId("canvas00001"));
 	}
 
 	@Test
-	public void testIsValidIdIncorrect() throws CustomException {
+	public void testIsValidIdIncorrect() {
 		assertFalse(canvasChecker.isValidId("*/*-//+++*%&^$%&*("));
 	}
 
-	@Test(expectedExceptions = CustomException.class)
-	public void testIsValidWeightNull() throws CustomException {
-		canvasChecker.isValidWeight(null);
+	@Test
+	public void testIsValidWeightNull() {
+		assertFalse(canvasChecker.isValidWeight(null));
 	}
 
 	@Test
-	public void testIsValidWeightCorrect() throws CustomException {
+	public void testIsValidWeightCorrect() {
 		assertTrue(canvasChecker.isValidWeight("13.3"));
 	}
 
 	@Test
-	public void testIsValidWeightIncorrect() throws CustomException {
+	public void testIsValidWeightIncorrect() {
 		assertFalse(canvasChecker.isValidWeight("-121"));
 	}
 
-	@Test(expectedExceptions = CustomException.class)
-	public void testIsValidCostNull() throws CustomException {
-		canvasChecker.isValidCost(null);
+	@Test
+	public void testIsValidCostNull() {
+		assertFalse(canvasChecker.isValidCost(null));
 	}
 
 	@Test
-	public void testIsValidCostCorrect() throws CustomException {
+	public void testIsValidCostCorrect() {
 		assertTrue(canvasChecker.isValidCost("12.2"));
 	}
 
 	@Test
-	public void testIsValidCostIncorrect() throws CustomException {
+	public void testIsValidCostIncorrect() {
 		assertFalse(canvasChecker.isValidCost("212.2.2.2."));
 	}
 
-	@Test(expectedExceptions = CustomException.class)
-	public void testIsValidMetalNull() throws CustomException {
-		canvasChecker.isValidMetal(null);
+	@Test
+	public void testIsValidMetalNull() {
+		assertFalse(canvasChecker.isValidMetal(null));
 	}
 
 	@Test
-	public void testIsValidMetalCorrect() throws CustomException {
+	public void testIsValidMetalCorrect() {
 		assertTrue(canvasChecker.isValidMetal("Aurum"));
 	}
 
 	@Test
-	public void testIsValidMetalIncorrect() throws CustomException {
+	public void testIsValidMetalIncorrect() {
 		assertFalse(canvasChecker.isValidMetal("GOLD"));
 	}
 }
