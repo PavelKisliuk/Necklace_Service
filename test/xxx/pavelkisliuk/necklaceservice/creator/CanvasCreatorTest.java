@@ -15,7 +15,7 @@ public class CanvasCreatorTest {
 		canvas.setCanvasId("canvas00001");
 		canvas.setWeight(150);
 		canvas.setCost(BigDecimal.valueOf(200.0));
-		canvas.setMetal(Canvas.Metal.ALBUM_AURUM);
+		canvas.setMetalType(Canvas.MetalType.ALBUM_AURUM);
 		assertEquals(canvas, new CanvasCreator().create("canvas00001-150-200-ALBUM_AURUM".split("-")));
 	}
 }

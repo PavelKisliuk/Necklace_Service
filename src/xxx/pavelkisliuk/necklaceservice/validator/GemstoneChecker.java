@@ -130,7 +130,7 @@ public class GemstoneChecker extends StoneChecker implements IChecker {
 		LOGGER.log(Level.DEBUG, "Check -> " + curiosity);
 		return LOGGER.traceExit(
 				Arrays.stream(
-						Gemstone.CuriosityLevel.values()).anyMatch(
+						Gemstone.CuriosityLevelType.values()).anyMatch(
 						e -> e.name().equals(curiosity.toUpperCase().trim())));
 	}
 
@@ -151,7 +151,7 @@ public class GemstoneChecker extends StoneChecker implements IChecker {
 		LOGGER.log(Level.DEBUG, "Check -> " + hardness);
 		return LOGGER.traceExit(
 				Arrays.stream(
-						Gemstone.HardnessLevel.values()).anyMatch(
+						Gemstone.HardnessLevelType.values()).anyMatch(
 						e -> e.name().equals(hardness.toUpperCase().trim())));
 	}
 

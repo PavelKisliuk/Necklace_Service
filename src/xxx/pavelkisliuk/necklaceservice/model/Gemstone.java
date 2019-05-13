@@ -49,22 +49,22 @@ public class Gemstone extends Stone {
 	/**
 	 * Level of curiosity (rarity in nature) of {@code Gemstone}
 	 */
-	public enum CuriosityLevel {VERY_RARE, RARE, MEDIUM, FREQUENT, VERY_FREQUENT}
+	public enum CuriosityLevelType {VERY_RARE, RARE, MEDIUM, FREQUENT, VERY_FREQUENT}
 
 	/**
 	 * Level of hardness (strength to defeat) of {@code Gemstone}
 	 */
-	public enum HardnessLevel {HARD, SPARSE, SOFT}
+	public enum HardnessLevelType {HARD, SPARSE, SOFT}
 
 	/**
 	 * Curiosity of {@code Gemstone}
 	 */
-	private CuriosityLevel curiosityLevel;
+	private CuriosityLevelType curiosityLevelType;
 
 	/**
 	 * Hardness of {@code Gemstone}
 	 */
-	private HardnessLevel hardnessLevel;
+	private HardnessLevelType hardnessLevelType;
 
 	/**
 	 * Opacity of {@code Gemstone}
@@ -87,38 +87,38 @@ public class Gemstone extends Stone {
 	public Gemstone(Gemstone gemstone) {
 		super(gemstone);
 		if (gemstone != null) {
-			this.curiosityLevel = gemstone.curiosityLevel;
-			this.hardnessLevel = gemstone.hardnessLevel;
+			this.curiosityLevelType = gemstone.curiosityLevelType;
+			this.hardnessLevelType = gemstone.hardnessLevelType;
 			this.opacity = gemstone.opacity;
 		}
 	}
 
 	/**
-	 * @return {@code curiosityLevel} of {@code Gemstone}
+	 * @return {@code curiosityLevelType} of {@code Gemstone}
 	 */
-	public CuriosityLevel getCuriosityLevel() {
-		return curiosityLevel;
+	public CuriosityLevelType getCuriosityLevelType() {
+		return curiosityLevelType;
 	}
 
 	/**
-	 * @param curiosityLevel set {@code curiosityLevel} of {@code Gemstone}
+	 * @param curiosityLevelType set {@code curiosityLevelType} of {@code Gemstone}
 	 */
-	public void setCuriosityLevel(CuriosityLevel curiosityLevel) {
-		this.curiosityLevel = curiosityLevel;
+	public void setCuriosityLevelType(CuriosityLevelType curiosityLevelType) {
+		this.curiosityLevelType = curiosityLevelType;
 	}
 
 	/**
-	 * @return {@code hardnessLevel} of {@code Gemstone}
+	 * @return {@code hardnessLevelType} of {@code Gemstone}
 	 */
-	public HardnessLevel getHardnessLevel() {
-		return hardnessLevel;
+	public HardnessLevelType getHardnessLevelType() {
+		return hardnessLevelType;
 	}
 
 	/**
-	 * @param hardnessLevel set {@code hardnessLevel} of {@code Gemstone}
+	 * @param hardnessLevelType set {@code hardnessLevelType} of {@code Gemstone}
 	 */
-	public void setHardnessLevel(HardnessLevel hardnessLevel) {
-		this.hardnessLevel = hardnessLevel;
+	public void setHardnessLevelType(HardnessLevelType hardnessLevelType) {
+		this.hardnessLevelType = hardnessLevelType;
 	}
 
 	/**
@@ -144,16 +144,16 @@ public class Gemstone extends Stone {
 		Gemstone gemstone = (Gemstone) o;
 
 		if (Double.compare(gemstone.opacity, opacity) != 0) return false;
-		if (curiosityLevel != gemstone.curiosityLevel) return false;
-		return hardnessLevel == gemstone.hardnessLevel;
+		if (curiosityLevelType != gemstone.curiosityLevelType) return false;
+		return hardnessLevelType == gemstone.hardnessLevelType;
 	}
 
 	@Override
 	public int hashCode() {
 		int result = super.hashCode();
 		long temp;
-		result = 31 * result + curiosityLevel.hashCode();
-		result = 31 * result + hardnessLevel.hashCode();
+		result = 31 * result + curiosityLevelType.hashCode();
+		result = 31 * result + hardnessLevelType.hashCode();
 		temp = Double.doubleToLongBits(opacity);
 		result = 31 * result + (int) (temp ^ (temp >>> 32));
 		return result;
@@ -162,8 +162,8 @@ public class Gemstone extends Stone {
 	@Override
 	public String toString() {
 		return super.toString() + "\nGemstone{" +
-				"curiosityLevel=" + curiosityLevel +
-				", hardnessLevel=" + hardnessLevel +
+				"curiosityLevelType=" + curiosityLevelType +
+				", hardnessLevelType=" + hardnessLevelType +
 				", opacity=" + opacity +
 				'}';
 	}

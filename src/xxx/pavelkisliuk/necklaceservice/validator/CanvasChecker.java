@@ -192,7 +192,7 @@ public class CanvasChecker implements IChecker {
 		LOGGER.log(Level.DEBUG, "Check -> " + metal);
 		return LOGGER.traceExit(
 				Arrays.stream(
-						Canvas.Metal.values()).anyMatch(
+						Canvas.MetalType.values()).anyMatch(
 						e -> e.name().equals(metal.toUpperCase().trim())));
 	}
 }

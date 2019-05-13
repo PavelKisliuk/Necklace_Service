@@ -73,11 +73,11 @@ public class GemstoneCreator implements IFactory {
 		gemstone.setWeight(Double.valueOf(elementsString[StoneChecker.WEIGHT_PLACE].trim()));
 		gemstone.setCost(BigDecimal.valueOf(
 				Double.valueOf(elementsString[StoneChecker.COST_PLACE].trim())));
-		gemstone.setCuriosityLevel(
-				Gemstone.CuriosityLevel.valueOf(
+		gemstone.setCuriosityLevelType(
+				Gemstone.CuriosityLevelType.valueOf(
 						elementsString[GemstoneChecker.CURIOSITY_PLACE].toUpperCase().trim()));
-		gemstone.setHardnessLevel(
-				Gemstone.HardnessLevel.valueOf(
+		gemstone.setHardnessLevelType(
+				Gemstone.HardnessLevelType.valueOf(
 						elementsString[GemstoneChecker.HARDNESS_PLACE].toUpperCase().trim()));
 		gemstone.setOpacity(Double.valueOf(elementsString[GemstoneChecker.OPACITY_PLACE].trim()));
 		return LOGGER.traceExit(gemstone);

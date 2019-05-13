@@ -20,14 +20,14 @@ public class NecklaceCreatorTest {
 		canvas.setCanvasId("canvas00001");
 		canvas.setWeight(150);
 		canvas.setCost(BigDecimal.valueOf(200.0));
-		canvas.setMetal(Canvas.Metal.ALBUM_AURUM);
+		canvas.setMetalType(Canvas.MetalType.ALBUM_AURUM);
 		Gemstone stone = new Gemstone();
 		stone.setName("Emerald");
 		stone.setStoneId("Emerald00001");
 		stone.setWeight(100);
 		stone.setCost(BigDecimal.valueOf(500.0));
-		stone.setCuriosityLevel(Gemstone.CuriosityLevel.MEDIUM);
-		stone.setHardnessLevel(Gemstone.HardnessLevel.HARD);
+		stone.setCuriosityLevelType(Gemstone.CuriosityLevelType.MEDIUM);
+		stone.setHardnessLevelType(Gemstone.HardnessLevelType.HARD);
 		stone.setOpacity(0.6);
 		necklaceElement.setCanvas(canvas);
 		necklaceElement.getStonesGroup().add(stone);

@@ -71,7 +71,7 @@ public class CanvasCreator implements IFactory {
 		canvas.setWeight(Double.valueOf(elementsString[CanvasChecker.WEIGHT_PLACE].trim()));
 		canvas.setCost(BigDecimal.valueOf(
 				Double.valueOf(elementsString[CanvasChecker.COST_PLACE].trim())));
-		canvas.setMetal(Canvas.Metal.valueOf(elementsString[CanvasChecker.METAL_PLACE].toUpperCase().trim()));
+		canvas.setMetalType(Canvas.MetalType.valueOf(elementsString[CanvasChecker.METAL_PLACE].toUpperCase().trim()));
 		return LOGGER.traceExit(canvas);
 	}
 }

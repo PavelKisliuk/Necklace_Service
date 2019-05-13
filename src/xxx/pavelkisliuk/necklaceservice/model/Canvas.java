@@ -38,9 +38,9 @@ import java.math.BigDecimal;
  */
 public class Canvas implements IProduct {
 	/**
-	 * Latin name of metal of {@code Canvas}
+	 * Latin name of metalType of {@code Canvas}
 	 */
-	public enum Metal {AURUM, ALBUM_AURUM, ARGENTUM, PLATINUM, AERIS}
+	public enum MetalType {AURUM, ALBUM_AURUM, ARGENTUM, PLATINUM, AERIS}
 
 	/**
 	 * ID of {@code Canvas}
@@ -60,7 +60,7 @@ public class Canvas implements IProduct {
 	/**
 	 * Material of {@code Canvas}
 	 */
-	private Metal metal;
+	private MetalType metalType;
 
 	/**
 	 * default constructor
@@ -78,7 +78,7 @@ public class Canvas implements IProduct {
 			this.canvasId = canvas.canvasId;
 			this.weight = canvas.weight;
 			this.cost = canvas.cost;
-			this.metal = canvas.metal;
+			this.metalType = canvas.metalType;
 		}
 	}
 
@@ -125,17 +125,17 @@ public class Canvas implements IProduct {
 	}
 
 	/**
-	 * @return {@code metal} of {@code Canvas}
+	 * @return {@code metalType} of {@code Canvas}
 	 */
-	public Metal getMetal() {
-		return metal;
+	public MetalType getMetalType() {
+		return metalType;
 	}
 
 	/**
-	 * @param metal set {@code metal} of {@code Canvas}
+	 * @param metalType set {@code metalType} of {@code Canvas}
 	 */
-	public void setMetal(Metal metal) {
-		this.metal = metal;
+	public void setMetalType(MetalType metalType) {
+		this.metalType = metalType;
 	}
 
 	@Override
@@ -148,7 +148,7 @@ public class Canvas implements IProduct {
 		if (Double.compare(canvas.weight, weight) != 0) return false;
 		if (!canvasId.equals(canvas.canvasId)) return false;
 		if (!cost.equals(canvas.cost)) return false;
-		return metal == canvas.metal;
+		return metalType == canvas.metalType;
 
 	}
 
@@ -160,7 +160,7 @@ public class Canvas implements IProduct {
 		temp = Double.doubleToLongBits(weight);
 		result = 31 * result + (int) (temp ^ (temp >>> 32));
 		result = 31 * result + cost.hashCode();
-		result = 31 * result + metal.hashCode();
+		result = 31 * result + metalType.hashCode();
 		return result;
 	}
 
@@ -170,7 +170,7 @@ public class Canvas implements IProduct {
 				"canvasId=" + canvasId +
 				", grWeight=" + weight +
 				", costD=" + cost +
-				", metal=" + metal +
+				", metalType=" + metalType +
 				'}';
 	}
 }
