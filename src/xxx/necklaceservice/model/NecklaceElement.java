@@ -25,8 +25,6 @@
 
 package xxx.necklaceservice.model;
 
-import xxx.necklaceservice.exception.CustomException;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,14 +59,13 @@ public class NecklaceElement implements IProduct {
 	/**
 	 * {@code NecklaceElement} copy constructor
 	 *
-	 * @param necklaceElement is object we copy
+	 * @param necklaceElement is object for copy
 	 */
-	public NecklaceElement(NecklaceElement necklaceElement) throws CustomException {
-		if (necklaceElement == null) {
-			throw new CustomException();
+	public NecklaceElement(NecklaceElement necklaceElement) {
+		if (necklaceElement != null) {
+			this.canvas = necklaceElement.canvas;
+			this.stonesGroup = new ArrayList<>(necklaceElement.stonesGroup);
 		}
-		this.canvas = necklaceElement.canvas;
-		this.stonesGroup = new ArrayList<>(necklaceElement.stonesGroup);
 	}
 
 	/**

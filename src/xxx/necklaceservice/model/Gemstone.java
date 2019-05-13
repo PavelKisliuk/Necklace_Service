@@ -25,8 +25,6 @@
 
 package xxx.necklaceservice.model;
 
-import xxx.necklaceservice.exception.CustomException;
-
 /**
  * The {@code Gemstone} class extend's {@code Stone} class and represent
  * precious stone.
@@ -84,13 +82,15 @@ public class Gemstone extends Stone {
 	/**
 	 * {@code Gemstone} copy constructor
 	 *
-	 * @param gemstone is object we copy
+	 * @param gemstone is object for copy
 	 */
-	public Gemstone(Gemstone gemstone) throws CustomException {
+	public Gemstone(Gemstone gemstone) {
 		super(gemstone);
-		this.curiosityLevel = gemstone.curiosityLevel;
-		this.hardnessLevel = gemstone.hardnessLevel;
-		this.opacity = gemstone.opacity;
+		if (gemstone != null) {
+			this.curiosityLevel = gemstone.curiosityLevel;
+			this.hardnessLevel = gemstone.hardnessLevel;
+			this.opacity = gemstone.opacity;
+		}
 	}
 
 	/**

@@ -25,8 +25,6 @@
 
 package xxx.necklaceservice.model;
 
-import xxx.necklaceservice.exception.CustomException;
-
 /**
  * The {@code Canvas} class represent place where are situated {@code Stone}
  * <p>
@@ -45,17 +43,17 @@ public class Canvas implements IProduct {
 	/**
 	 * ID of {@code Canvas}
 	 */
-	private String idCanvas;
+	private String canvasId;
 
 	/**
 	 * Weight of {@code Canvas} in grams
 	 */
-	private double grWeight;
+	private double weight;
 
 	/**
 	 * Cost of {@code Canvas} in dollars
 	 */
-	private double costD;
+	private double cost;
 
 	/**
 	 * Material of {@code Canvas}
@@ -71,58 +69,57 @@ public class Canvas implements IProduct {
 	/**
 	 * {@code Canvas} copy constructor
 	 *
-	 * @param canvas is object we copy
+	 * @param canvas is object for copy
 	 */
-	public Canvas(Canvas canvas) throws CustomException {
-		if (canvas == null) {
-			throw new CustomException();
+	public Canvas(Canvas canvas) {
+		if (canvas != null) {
+			this.canvasId = canvas.canvasId;
+			this.weight = canvas.weight;
+			this.cost = canvas.cost;
+			this.metal = canvas.metal;
 		}
-		this.idCanvas = canvas.idCanvas;
-		this.grWeight = canvas.grWeight;
-		this.costD = canvas.costD;
-		this.metal = canvas.metal;
 	}
 
 	/**
-	 * @return {@code id} of {@code Canvas}
+	 * @return {@code canvasId} of {@code Canvas}
 	 */
-	public String getIdCanvas() {
-		return idCanvas;
+	public String getCanvasId() {
+		return canvasId;
 	}
 
 	/**
-	 * @param id set {@code id} of {@code Canvas}
+	 * @param id set {@code canvasId} of {@code Canvas}
 	 */
-	public void setIdCanvas(String id) {
-		this.idCanvas = id;
+	public void setCanvasId(String id) {
+		this.canvasId = id;
 	}
 
 	/**
-	 * @return {@code grWeight} of {@code Canvas}
+	 * @return {@code weight} of {@code Canvas}
 	 */
-	public double getGrWeight() {
-		return grWeight;
+	public double getWeight() {
+		return weight;
 	}
 
 	/**
-	 * @param grWeight set {@code grWeight} of {@code Canvas}
+	 * @param weight set {@code weight} of {@code Canvas}
 	 */
-	public void setGrWeight(double grWeight) {
-		this.grWeight = grWeight;
+	public void setWeight(double weight) {
+		this.weight = weight;
 	}
 
 	/**
-	 * @return {@code costD} of {@code Canvas}
+	 * @return {@code cost} of {@code Canvas}
 	 */
-	public double getCostD() {
-		return costD;
+	public double getCost() {
+		return cost;
 	}
 
 	/**
-	 * @param costD set {@code costD} of {@code Canvas}
+	 * @param cost set {@code cost} of {@code Canvas}
 	 */
-	public void setCostD(double costD) {
-		this.costD = costD;
+	public void setCost(double cost) {
+		this.cost = cost;
 	}
 
 	/**
@@ -146,9 +143,9 @@ public class Canvas implements IProduct {
 
 		Canvas canvas = (Canvas) o;
 
-		if (Double.compare(canvas.grWeight, grWeight) != 0) return false;
-		if (Double.compare(canvas.costD, costD) != 0) return false;
-		if (!idCanvas.equals(canvas.idCanvas)) return false;
+		if (Double.compare(canvas.weight, weight) != 0) return false;
+		if (Double.compare(canvas.cost, cost) != 0) return false;
+		if (!canvasId.equals(canvas.canvasId)) return false;
 		return metal == canvas.metal;
 
 	}
@@ -157,10 +154,10 @@ public class Canvas implements IProduct {
 	public int hashCode() {
 		int result;
 		long temp;
-		result = idCanvas.hashCode();
-		temp = Double.doubleToLongBits(grWeight);
+		result = canvasId.hashCode();
+		temp = Double.doubleToLongBits(weight);
 		result = 31 * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(costD);
+		temp = Double.doubleToLongBits(cost);
 		result = 31 * result + (int) (temp ^ (temp >>> 32));
 		result = 31 * result + metal.hashCode();
 		return result;
@@ -169,9 +166,9 @@ public class Canvas implements IProduct {
 	@Override
 	public String toString() {
 		return "Canvas{" +
-				"id=" + idCanvas +
-				", grWeight=" + grWeight +
-				", costD=" + costD +
+				"canvasId=" + canvasId +
+				", grWeight=" + weight +
+				", costD=" + cost +
 				", metal=" + metal +
 				'}';
 	}

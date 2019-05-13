@@ -25,8 +25,6 @@
 
 package xxx.necklaceservice.model;
 
-import xxx.necklaceservice.exception.CustomException;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +41,7 @@ public class Necklace implements IProduct {
 	/**
 	 * ID of {@code Necklace}
 	 */
-	private String idNecklace;
+	private String necklaceId;
 
 	/**
 	 * List of {@code NecklaceElement} class-wrapper for storing particular elements of
@@ -54,7 +52,7 @@ public class Necklace implements IProduct {
 	/**
 	 * Cost of {@code Necklace} in dollars
 	 */
-	private double costD;
+	private double cost;
 
 	/**
 	 * default constructor
@@ -66,29 +64,28 @@ public class Necklace implements IProduct {
 	/**
 	 * {@code Necklace} copy constructor
 	 *
-	 * @param necklace is object we copy
+	 * @param necklace is object for copy
 	 */
-	public Necklace(Necklace necklace) throws CustomException {
-		if (necklace == null) {
-			throw new CustomException();
+	public Necklace(Necklace necklace) {
+		if (necklace != null) {
+			this.necklaceId = necklace.necklaceId;
+			this.necklaceElementsList = new ArrayList<>(necklace.necklaceElementsList);
+			this.cost = necklace.cost;
 		}
-		this.idNecklace = necklace.idNecklace;
-		this.necklaceElementsList = new ArrayList<>(necklace.necklaceElementsList);
-		this.costD = necklace.costD;
 	}
 
 	/**
-	 * @return {@code id} of {@code Necklace}
+	 * @return {@code necklaceId} of {@code Necklace}
 	 */
-	public String getIdNecklace() {
-		return idNecklace;
+	public String getNecklaceId() {
+		return necklaceId;
 	}
 
 	/**
-	 * @param id set {@code id} of {@code Necklace}
+	 * @param id set {@code necklaceId} of {@code Necklace}
 	 */
-	public void setIdNecklace(String id) {
-		this.idNecklace = id;
+	public void setNecklaceId(String id) {
+		this.necklaceId = id;
 	}
 
 	/**
@@ -106,17 +103,17 @@ public class Necklace implements IProduct {
 	}
 
 	/**
-	 * @return {@code costD} of {@code Necklace}
+	 * @return {@code cost} of {@code Necklace}
 	 */
-	public double getCostD() {
-		return costD;
+	public double getCost() {
+		return cost;
 	}
 
 	/**
-	 * @param costD set {@code id} of {@code Necklace}
+	 * @param cost set {@code id} of {@code Necklace}
 	 */
-	public void setCostD(double costD) {
-		this.costD = costD;
+	public void setCost(double cost) {
+		this.cost = cost;
 	}
 
 	@Override
@@ -126,8 +123,8 @@ public class Necklace implements IProduct {
 
 		Necklace necklace = (Necklace) o;
 
-		if (Double.compare(necklace.costD, costD) != 0) return false;
-		if (!idNecklace.equals(necklace.idNecklace)) return false;
+		if (Double.compare(necklace.cost, cost) != 0) return false;
+		if (!necklaceId.equals(necklace.necklaceId)) return false;
 		return necklaceElementsList.equals(necklace.necklaceElementsList);
 
 	}
@@ -136,9 +133,9 @@ public class Necklace implements IProduct {
 	public int hashCode() {
 		int result;
 		long temp;
-		result = idNecklace.hashCode();
+		result = necklaceId.hashCode();
 		result = 31 * result + necklaceElementsList.hashCode();
-		temp = Double.doubleToLongBits(costD);
+		temp = Double.doubleToLongBits(cost);
 		result = 31 * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
@@ -146,9 +143,9 @@ public class Necklace implements IProduct {
 	@Override
 	public String toString() {
 		return "Necklace{" +
-				"idNecklace='" + idNecklace + '\'' +
+				"necklaceId='" + necklaceId + '\'' +
 				", necklaceElementsList=" + necklaceElementsList +
-				", costD=" + costD +
+				", cost=" + cost +
 				'}';
 	}
 }

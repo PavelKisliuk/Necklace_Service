@@ -25,8 +25,6 @@
 
 package xxx.necklaceservice.model;
 
-import xxx.necklaceservice.exception.CustomException;
-
 /**
  * The {@code Stone} class represent abstract stone
  * <p>
@@ -45,17 +43,17 @@ public class Stone implements IProduct {
 	/**
 	 * ID of {@code Stone}
 	 */
-	private String idStone;
+	private String stoneId;
 
 	/**
 	 * Weight of {@code Stone} in carats
 	 */
-	private double ctWeight;
+	private double weight;
 
 	/**
 	 * Cost of {@code Stone} in dollars
 	 */
-	private double costD;
+	private double cost;
 
 	/**
 	 * default constructor
@@ -66,16 +64,15 @@ public class Stone implements IProduct {
 	/**
 	 * {@code Stone} copy constructor
 	 *
-	 * @param stone is object we copy
+	 * @param stone is object for copy
 	 */
-	public Stone(Stone stone) throws CustomException {
-		if (stone == null) {
-			throw new CustomException();
+	public Stone(Stone stone) {
+		if (stone != null) {
+			this.name = stone.name;
+			this.stoneId = stone.stoneId;
+			this.weight = stone.weight;
+			this.cost = stone.cost;
 		}
-		this.name = stone.name;
-		this.idStone = stone.idStone;
-		this.ctWeight = stone.ctWeight;
-		this.costD = stone.costD;
 	}
 
 	/**
@@ -93,45 +90,45 @@ public class Stone implements IProduct {
 	}
 
 	/**
-	 * @return {@code id} of {@code Stone}
+	 * @return {@code stoneId} of {@code Stone}
 	 */
-	public String getIdStone() {
-		return idStone;
+	public String getStoneId() {
+		return stoneId;
 	}
 
 	/**
-	 * @param id set {@code id} of {@code Stone}
+	 * @param id set {@code stoneId} of {@code Stone}
 	 */
-	public void setIdStone(String id) {
-		this.idStone = id;
+	public void setStoneId(String id) {
+		this.stoneId = id;
 	}
 
 	/**
-	 * @return {@code ctWeight} of {@code Stone}
+	 * @return {@code weight} of {@code Stone}
 	 */
-	public double getCtWeight() {
-		return ctWeight;
+	public double getWeight() {
+		return weight;
 	}
 
 	/**
-	 * @param ctWeight set {@code ctWeight} of {@code Stone}
+	 * @param weight set {@code weight} of {@code Stone}
 	 */
-	public void setCtWeight(double ctWeight) {
-		this.ctWeight = ctWeight;
+	public void setWeight(double weight) {
+		this.weight = weight;
 	}
 
 	/**
-	 * @return {@code costD} of {@code Stone}
+	 * @return {@code cost} of {@code Stone}
 	 */
-	public double getCostD() {
-		return costD;
+	public double getCost() {
+		return cost;
 	}
 
 	/**
-	 * @param costD set {@code costD} of {@code Stone}
+	 * @param cost set {@code cost} of {@code Stone}
 	 */
-	public void setCostD(double costD) {
-		this.costD = costD;
+	public void setCost(double cost) {
+		this.cost = cost;
 	}
 
 	@Override
@@ -141,10 +138,10 @@ public class Stone implements IProduct {
 
 		Stone stone = (Stone) o;
 
-		if (Double.compare(stone.ctWeight, ctWeight) != 0) return false;
-		if (Double.compare(stone.costD, costD) != 0) return false;
+		if (Double.compare(stone.weight, weight) != 0) return false;
+		if (Double.compare(stone.cost, cost) != 0) return false;
 		if (!name.equals(stone.name)) return false;
-		return idStone.equals(stone.idStone);
+		return stoneId.equals(stone.stoneId);
 
 	}
 
@@ -153,10 +150,10 @@ public class Stone implements IProduct {
 		int result;
 		long temp;
 		result = name.hashCode();
-		result = 31 * result + idStone.hashCode();
-		temp = Double.doubleToLongBits(ctWeight);
+		result = 31 * result + stoneId.hashCode();
+		temp = Double.doubleToLongBits(weight);
 		result = 31 * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(costD);
+		temp = Double.doubleToLongBits(cost);
 		result = 31 * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
@@ -165,9 +162,9 @@ public class Stone implements IProduct {
 	public String toString() {
 		return "Stone{" +
 				"name='" + name + '\'' +
-				", id=" + idStone +
-				", ctWeight=" + ctWeight +
-				", costD=" + costD +
+				", stoneId=" + stoneId +
+				", weight=" + weight +
+				", cost=" + cost +
 				'}';
 	}
 }
