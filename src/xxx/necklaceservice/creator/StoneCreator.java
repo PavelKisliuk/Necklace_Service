@@ -33,6 +33,7 @@ import xxx.necklaceservice.model.IProduct;
 import xxx.necklaceservice.model.Stone;
 import xxx.necklaceservice.validator.StoneChecker;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 
 /**
@@ -69,9 +70,10 @@ public class StoneCreator implements IFactory {
 
 		Stone stone = new Stone();
 		stone.setName(elementsString[StoneChecker.NAME_PLACE].trim());
-		stone.setIdStone(elementsString[StoneChecker.ID_PLACE].trim());
-		stone.setCtWeight(Double.valueOf(elementsString[StoneChecker.WEIGHT_PLACE].trim()));
-		stone.setCostD(Double.valueOf(elementsString[StoneChecker.COST_PLACE].trim()));
+		stone.setStoneId(elementsString[StoneChecker.ID_PLACE].trim());
+		stone.setWeight(Double.valueOf(elementsString[StoneChecker.WEIGHT_PLACE].trim()));
+		stone.setCost(BigDecimal.valueOf(
+				Double.valueOf(elementsString[StoneChecker.COST_PLACE].trim())));
 		return LOGGER.traceExit(stone);
 	}
 }

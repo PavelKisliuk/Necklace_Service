@@ -25,6 +25,8 @@
 
 package xxx.necklaceservice.model;
 
+import java.math.BigDecimal;
+
 /**
  * The {@code Canvas} class represent place where are situated {@code Stone}
  * <p>
@@ -53,7 +55,7 @@ public class Canvas implements IProduct {
 	/**
 	 * Cost of {@code Canvas} in dollars
 	 */
-	private double cost;
+	private BigDecimal cost;
 
 	/**
 	 * Material of {@code Canvas}
@@ -111,14 +113,14 @@ public class Canvas implements IProduct {
 	/**
 	 * @return {@code cost} of {@code Canvas}
 	 */
-	public double getCost() {
+	public BigDecimal getCost() {
 		return cost;
 	}
 
 	/**
 	 * @param cost set {@code cost} of {@code Canvas}
 	 */
-	public void setCost(double cost) {
+	public void setCost(BigDecimal cost) {
 		this.cost = cost;
 	}
 
@@ -144,8 +146,8 @@ public class Canvas implements IProduct {
 		Canvas canvas = (Canvas) o;
 
 		if (Double.compare(canvas.weight, weight) != 0) return false;
-		if (Double.compare(canvas.cost, cost) != 0) return false;
 		if (!canvasId.equals(canvas.canvasId)) return false;
+		if (!cost.equals(canvas.cost)) return false;
 		return metal == canvas.metal;
 
 	}
@@ -157,8 +159,7 @@ public class Canvas implements IProduct {
 		result = canvasId.hashCode();
 		temp = Double.doubleToLongBits(weight);
 		result = 31 * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(cost);
-		result = 31 * result + (int) (temp ^ (temp >>> 32));
+		result = 31 * result + cost.hashCode();
 		result = 31 * result + metal.hashCode();
 		return result;
 	}

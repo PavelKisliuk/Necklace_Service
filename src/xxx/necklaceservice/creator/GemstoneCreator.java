@@ -34,6 +34,7 @@ import xxx.necklaceservice.model.IProduct;
 import xxx.necklaceservice.validator.GemstoneChecker;
 import xxx.necklaceservice.validator.StoneChecker;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 
 /**
@@ -70,9 +71,10 @@ public class GemstoneCreator implements IFactory {
 
 		Gemstone gemstone = new Gemstone();
 		gemstone.setName(elementsString[StoneChecker.NAME_PLACE].trim());
-		gemstone.setIdStone(elementsString[StoneChecker.ID_PLACE].trim());
-		gemstone.setCtWeight(Double.valueOf(elementsString[StoneChecker.WEIGHT_PLACE].trim()));
-		gemstone.setCostD(Double.valueOf(elementsString[StoneChecker.COST_PLACE].trim()));
+		gemstone.setStoneId(elementsString[StoneChecker.ID_PLACE].trim());
+		gemstone.setWeight(Double.valueOf(elementsString[StoneChecker.WEIGHT_PLACE].trim()));
+		gemstone.setCost(BigDecimal.valueOf(
+				Double.valueOf(elementsString[StoneChecker.COST_PLACE].trim())));
 		gemstone.setCuriosityLevel(
 				Gemstone.CuriosityLevel.valueOf(
 						elementsString[GemstoneChecker.CURIOSITY_PLACE].toUpperCase().trim()));

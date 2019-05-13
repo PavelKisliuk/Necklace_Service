@@ -25,6 +25,8 @@
 
 package xxx.necklaceservice.model;
 
+import java.math.BigDecimal;
+
 /**
  * The {@code Stone} class represent abstract stone
  * <p>
@@ -53,7 +55,7 @@ public class Stone implements IProduct {
 	/**
 	 * Cost of {@code Stone} in dollars
 	 */
-	private double cost;
+	private BigDecimal cost;
 
 	/**
 	 * default constructor
@@ -120,14 +122,14 @@ public class Stone implements IProduct {
 	/**
 	 * @return {@code cost} of {@code Stone}
 	 */
-	public double getCost() {
+	public BigDecimal getCost() {
 		return cost;
 	}
 
 	/**
 	 * @param cost set {@code cost} of {@code Stone}
 	 */
-	public void setCost(double cost) {
+	public void setCost(BigDecimal cost) {
 		this.cost = cost;
 	}
 
@@ -139,9 +141,9 @@ public class Stone implements IProduct {
 		Stone stone = (Stone) o;
 
 		if (Double.compare(stone.weight, weight) != 0) return false;
-		if (Double.compare(stone.cost, cost) != 0) return false;
 		if (!name.equals(stone.name)) return false;
-		return stoneId.equals(stone.stoneId);
+		if (!stoneId.equals(stone.stoneId)) return false;
+		return cost.equals(stone.cost);
 
 	}
 
@@ -153,8 +155,7 @@ public class Stone implements IProduct {
 		result = 31 * result + stoneId.hashCode();
 		temp = Double.doubleToLongBits(weight);
 		result = 31 * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(cost);
-		result = 31 * result + (int) (temp ^ (temp >>> 32));
+		result = 31 * result + cost.hashCode();
 		return result;
 	}
 

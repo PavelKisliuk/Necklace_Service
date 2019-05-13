@@ -33,6 +33,7 @@ import xxx.necklaceservice.model.Canvas;
 import xxx.necklaceservice.model.IProduct;
 import xxx.necklaceservice.validator.CanvasChecker;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 
 /**
@@ -68,9 +69,10 @@ public class CanvasCreator implements IFactory {
 		}
 
 		Canvas canvas = new Canvas();
-		canvas.setIdCanvas(elementsString[CanvasChecker.ID_PLACE].trim());
-		canvas.setGrWeight(Double.valueOf(elementsString[CanvasChecker.WEIGHT_PLACE].trim()));
-		canvas.setCostD(Double.valueOf(elementsString[CanvasChecker.COST_PLACE].trim()));
+		canvas.setCanvasId(elementsString[CanvasChecker.ID_PLACE].trim());
+		canvas.setWeight(Double.valueOf(elementsString[CanvasChecker.WEIGHT_PLACE].trim()));
+		canvas.setCost(BigDecimal.valueOf(
+				Double.valueOf(elementsString[CanvasChecker.COST_PLACE].trim())));
 		canvas.setMetal(Canvas.Metal.valueOf(elementsString[CanvasChecker.METAL_PLACE].toUpperCase().trim()));
 		return LOGGER.traceExit(canvas);
 	}

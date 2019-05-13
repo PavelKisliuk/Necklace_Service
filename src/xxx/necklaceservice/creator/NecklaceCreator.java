@@ -33,6 +33,7 @@ import xxx.necklaceservice.model.IProduct;
 import xxx.necklaceservice.model.Necklace;
 import xxx.necklaceservice.validator.NecklaceChecker;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 
 /**
@@ -68,13 +69,14 @@ public class NecklaceCreator implements IFactory {
 		}
 
 		Necklace necklace = new Necklace();
-		necklace.setIdNecklace(elementsString[NecklaceChecker.ID_PLACE].trim());
+		necklace.setNecklaceId(elementsString[NecklaceChecker.ID_PLACE].trim());
 		for (String necklaceElement :
 				elementsString[NecklaceChecker.NECLACE_ELEMENTS_LIST_PLACE].trim().split("~")) {
 			necklace.getNecklaceElementsList().add(
 					new NecklaceElementCreator().create(necklaceElement.split("#")));
 		}
-		necklace.setCostD(Double.valueOf(elementsString[NecklaceChecker.COST_PLACE]));
+		necklace.setCost(BigDecimal.valueOf(
+				Double.valueOf(elementsString[NecklaceChecker.COST_PLACE])));
 
 		return LOGGER.traceExit(necklace);
 	}

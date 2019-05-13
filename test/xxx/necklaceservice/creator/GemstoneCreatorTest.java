@@ -5,6 +5,8 @@ import xxx.necklaceservice.exception.CustomException;
 import xxx.necklaceservice.model.Gemstone;
 import xxx.necklaceservice.model.Stone;
 
+import java.math.BigDecimal;
+
 import static org.testng.Assert.*;
 
 public class GemstoneCreatorTest {
@@ -13,9 +15,9 @@ public class GemstoneCreatorTest {
 	public void testCreate() throws CustomException {
 		Gemstone stone = new Gemstone();
 		stone.setName("Emerald");
-		stone.setIdStone("Emerald00001");
-		stone.setCtWeight(100);
-		stone.setCostD(500);
+		stone.setStoneId("Emerald00001");
+		stone.setWeight(100);
+		stone.setCost(BigDecimal.valueOf(500.0));
 		stone.setCuriosityLevel(Gemstone.CuriosityLevel.MEDIUM);
 		stone.setHardnessLevel(Gemstone.HardnessLevel.HARD);
 		stone.setOpacity(0.6);

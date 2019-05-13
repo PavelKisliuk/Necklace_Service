@@ -25,6 +25,7 @@
 
 package xxx.necklaceservice.model;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class Necklace implements IProduct {
 	/**
 	 * Cost of {@code Necklace} in dollars
 	 */
-	private double cost;
+	private BigDecimal cost;
 
 	/**
 	 * default constructor
@@ -105,14 +106,14 @@ public class Necklace implements IProduct {
 	/**
 	 * @return {@code cost} of {@code Necklace}
 	 */
-	public double getCost() {
+	public BigDecimal getCost() {
 		return cost;
 	}
 
 	/**
 	 * @param cost set {@code id} of {@code Necklace}
 	 */
-	public void setCost(double cost) {
+	public void setCost(BigDecimal cost) {
 		this.cost = cost;
 	}
 
@@ -123,20 +124,17 @@ public class Necklace implements IProduct {
 
 		Necklace necklace = (Necklace) o;
 
-		if (Double.compare(necklace.cost, cost) != 0) return false;
 		if (!necklaceId.equals(necklace.necklaceId)) return false;
-		return necklaceElementsList.equals(necklace.necklaceElementsList);
+		if (!necklaceElementsList.equals(necklace.necklaceElementsList)) return false;
+		return cost.equals(necklace.cost);
 
 	}
 
 	@Override
 	public int hashCode() {
-		int result;
-		long temp;
-		result = necklaceId.hashCode();
+		int result = necklaceId.hashCode();
 		result = 31 * result + necklaceElementsList.hashCode();
-		temp = Double.doubleToLongBits(cost);
-		result = 31 * result + (int) (temp ^ (temp >>> 32));
+		result = 31 * result + cost.hashCode();
 		return result;
 	}
 
