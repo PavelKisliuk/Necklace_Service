@@ -7,11 +7,11 @@ import xxx.pavelkisliuk.necklaceservice.model.NecklaceElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class metalSpec implements ISpec {
+public class MetalSpec implements ISpec {
 
 	private Canvas.MetalType metalType;
 
-	public metalSpec(Canvas.MetalType metalType) {
+	public MetalSpec(Canvas.MetalType metalType) {
 		this.metalType = metalType;
 	}
 
