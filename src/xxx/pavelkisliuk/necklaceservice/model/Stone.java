@@ -34,6 +34,10 @@ import java.math.BigDecimal;
  * setting and getting values of it's fields.
  *
  * @author Kisliuk Pavel Sergeevich
+ * @see Gemstone
+ * @see Canvas
+ * @see NecklaceElement
+ * @see Necklace
  * @since 12.0
  */
 public class Stone implements IProduct {

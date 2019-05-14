@@ -33,6 +33,10 @@ package xxx.pavelkisliuk.necklaceservice.model;
  * setting and getting values of it's fields.
  *
  * @author Kisliuk Pavel Sergeevich
+ * @see Canvas
+ * @see Necklace
+ * @see NecklaceElement
+ * @see Stone
  * @since 12.0
  */
 public class Gemstone extends Stone {

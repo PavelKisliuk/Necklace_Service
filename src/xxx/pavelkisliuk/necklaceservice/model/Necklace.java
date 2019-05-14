@@ -36,6 +36,10 @@ import java.util.List;
  * setting and getting values of it's field.
  *
  * @author Kisliuk Pavel Sergeevich
+ * @see Gemstone
+ * @see Canvas
+ * @see NecklaceElement
+ * @see Stone
  * @since 12.0
  */
 public class Necklace implements IProduct {
