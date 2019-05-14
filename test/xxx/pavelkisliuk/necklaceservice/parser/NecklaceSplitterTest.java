@@ -28,8 +28,8 @@ public class NecklaceSplitterTest {
 		necklaceList.add("#Emerald-Emerald00001-100-500-MEDIUM-HARD-0.6");
 		necklaceList.add("&3080");
 		necklaceList.add(">");
-		String[] array =
+		String[] expected =
 				{"necklace00001&canvas00001-150-200-ALBUM_AURUM#Emerald-Emerald00001-100-500-MEDIUM-HARD-0.6&3080"};
-		assertEquals(array, iSplitter.split(necklaceList));
+		assertEquals(iSplitter.split(necklaceList), expected);
 	}
 }

@@ -46,132 +46,132 @@ public class RepositoryTest {
 	@Test
 	public void testQueryMetalAlbumCorrect() throws CustomException {
 		readExpectedData("testfile/ForRepository/AlbumAurum.txt");
-		assertEquals(expected, repository.query(new MetalSpec(Canvas.MetalType.ALBUM_AURUM)));
+		assertEquals(repository.query(new MetalSpec(Canvas.MetalType.ALBUM_AURUM)), expected);
 	}
 
 	@Test
 	public void testQueryMetalAlbumIncorrect() throws CustomException {
 		readExpectedData("testfile/ForRepository/AlbumAurum.txt");
-		assertNotEquals(expected, repository.query(new MetalSpec(Canvas.MetalType.AERIS)));
+		assertNotEquals(repository.query(new MetalSpec(Canvas.MetalType.AERIS)), expected);
 	}
 
 	@Test
 	public void testQueryMetalAerisCorrect() throws CustomException {
 		readExpectedData("testfile/ForRepository/Aeris.txt");
-		assertEquals(expected, repository.query(new MetalSpec(Canvas.MetalType.AERIS)));
+		assertEquals(repository.query(new MetalSpec(Canvas.MetalType.AERIS)), expected);
 	}
 
 	@Test
 	public void testQueryMetalAerisIncorrect() throws CustomException {
 		readExpectedData("testfile/ForRepository/Aeris.txt");
-		assertNotEquals(expected, repository.query(new MetalSpec(Canvas.MetalType.ALBUM_AURUM)));
+		assertNotEquals(repository.query(new MetalSpec(Canvas.MetalType.ALBUM_AURUM)), expected);
 	}
 
 	@Test
 	public void testQueryMetalAurumCorrect() throws CustomException {
 		readExpectedData("testfile/ForRepository/Aurum.txt");
-		assertEquals(expected, repository.query(new MetalSpec(Canvas.MetalType.AURUM)));
+		assertEquals(repository.query(new MetalSpec(Canvas.MetalType.AURUM)), expected);
 	}
 
 	@Test
 	public void testQueryMetalAurumIncorrect() throws CustomException {
 		readExpectedData("testfile/ForRepository/Aurum.txt");
-		assertNotEquals(expected, repository.query(new MetalSpec(Canvas.MetalType.ALBUM_AURUM)));
+		assertNotEquals(repository.query(new MetalSpec(Canvas.MetalType.ALBUM_AURUM)), expected);
 	}
 
 	@Test
 	public void testQueryCuriosityFrequentCorrect() throws CustomException {
 		readExpectedData("testfile/ForRepository/Frequent.txt");
-		assertEquals(expected, repository.query(new CuriositySpec(Gemstone.CuriosityLevelType.FREQUENT)));
+		assertEquals(repository.query(new CuriositySpec(Gemstone.CuriosityLevelType.FREQUENT)), expected);
 	}
 
 	@Test
 	public void testQueryCuriosityFrequentIncorrect() throws CustomException {
 		readExpectedData("testfile/ForRepository/Frequent.txt");
-		assertNotEquals(expected, repository.query(new CuriositySpec(Gemstone.CuriosityLevelType.RARE)));
+		assertNotEquals(repository.query(new CuriositySpec(Gemstone.CuriosityLevelType.RARE)), expected);
 	}
 
 	@Test
 	public void testQueryCuriosityMediumCorrect() throws CustomException {
 		readExpectedData("testfile/ForRepository/Medium.txt");
-		assertEquals(expected, repository.query(new CuriositySpec(Gemstone.CuriosityLevelType.MEDIUM)));
+		assertEquals(repository.query(new CuriositySpec(Gemstone.CuriosityLevelType.MEDIUM)), expected);
 	}
 
 	@Test
 	public void testQueryCuriosityMediumIncorrect() throws CustomException {
 		readExpectedData("testfile/ForRepository/Medium.txt");
-		assertNotEquals(expected, repository.query(new CuriositySpec(Gemstone.CuriosityLevelType.RARE)));
+		assertNotEquals(repository.query(new CuriositySpec(Gemstone.CuriosityLevelType.RARE)), expected);
 	}
 
 	@Test
 	public void testQueryCuriosityRareCorrect() throws CustomException {
 		readExpectedData("testfile/ForRepository/Rare.txt");
-		assertEquals(expected, repository.query(new CuriositySpec(Gemstone.CuriosityLevelType.RARE)));
+		assertEquals(repository.query(new CuriositySpec(Gemstone.CuriosityLevelType.RARE)), expected);
 	}
 
 	@Test
 	public void testQueryCuriosityRareIncorrect() throws CustomException {
 		readExpectedData("testfile/ForRepository/Rare.txt");
-		assertNotEquals(expected, repository.query(new CuriositySpec(Gemstone.CuriosityLevelType.MEDIUM)));
+		assertNotEquals(repository.query(new CuriositySpec(Gemstone.CuriosityLevelType.MEDIUM)), expected);
 	}
 
 	@Test
 	public void testQueryHardnessHardCorrect() throws CustomException {
 		readExpectedData("testfile/ForRepository/Hard.txt");
-		assertEquals(expected, repository.query(new HardnessSpec(Gemstone.HardnessLevelType.HARD)));
+		assertEquals(repository.query(new HardnessSpec(Gemstone.HardnessLevelType.HARD)), expected);
 	}
 
 	@Test
 	public void testQueryHardnessHardIncorrect() throws CustomException {
 		readExpectedData("testfile/ForRepository/Hard.txt");
-		assertNotEquals(expected, repository.query(new HardnessSpec(Gemstone.HardnessLevelType.SPARSE)));
+		assertNotEquals(repository.query(new HardnessSpec(Gemstone.HardnessLevelType.SPARSE)), expected);
 	}
 
 	@Test
 	public void testQueryHardnessSparseCorrect() throws CustomException {
 		readExpectedData("testfile/ForRepository/Sparse.txt");
-		assertEquals(expected, repository.query(new HardnessSpec(Gemstone.HardnessLevelType.SPARSE)));
+		assertEquals(repository.query(new HardnessSpec(Gemstone.HardnessLevelType.SPARSE)), expected);
 	}
 
 	@Test
 	public void testQueryHardnessSparseIncorrect() throws CustomException {
 		readExpectedData("testfile/ForRepository/Sparse.txt");
-		assertNotEquals(expected, repository.query(new HardnessSpec(Gemstone.HardnessLevelType.SOFT)));
+		assertNotEquals(repository.query(new HardnessSpec(Gemstone.HardnessLevelType.SOFT)), expected);
 	}
 
 	@Test
 	public void testQueryHardnessSoftCorrect() throws CustomException {
 		readExpectedData("testfile/ForRepository/Soft.txt");
-		assertEquals(expected, repository.query(new HardnessSpec(Gemstone.HardnessLevelType.SOFT)));
+		assertEquals(repository.query(new HardnessSpec(Gemstone.HardnessLevelType.SOFT)), expected);
 	}
 
 	@Test
 	public void testQueryHardnessSoftIncorrect() throws CustomException {
 		readExpectedData("testfile/ForRepository/Soft.txt");
-		assertNotEquals(expected, repository.query(new HardnessSpec(Gemstone.HardnessLevelType.HARD)));
+		assertNotEquals(repository.query(new HardnessSpec(Gemstone.HardnessLevelType.HARD)), expected);
 	}
 
 	@Test
 	public void testQueryStoneNameDiamondCorrect() throws CustomException {
 		readExpectedData("testfile/ForRepository/Diamond.txt");
-		assertEquals(expected, repository.query(new StoneNameSpec("Diamond")));
+		assertEquals(repository.query(new StoneNameSpec("Diamond")), expected);
 	}
 
 	@Test
 	public void testQueryStoneNameDiamondIncorrect() throws CustomException {
 		readExpectedData("testfile/ForRepository/Diamond.txt");
-		assertNotEquals(expected, repository.query(new StoneNameSpec("Sardius")));
+		assertNotEquals(repository.query(new StoneNameSpec("Sardius")), expected);
 	}
 
 	@Test
 	public void testQueryStoneNameSardiusCorrect() throws CustomException {
 		readExpectedData("testfile/ForRepository/Sardius.txt");
-		assertEquals(expected, repository.query(new StoneNameSpec("Sardius")));
+		assertEquals(repository.query(new StoneNameSpec("Sardius")), expected);
 	}
 
 	@Test
 	public void testQueryStoneNameSardiusIncorrect() throws CustomException {
 		readExpectedData("testfile/ForRepository/Sardius.txt");
-		assertNotEquals(expected, repository.query(new StoneNameSpec("Emerald")));
+		assertNotEquals(repository.query(new StoneNameSpec("Emerald")), expected);
 	}
 }

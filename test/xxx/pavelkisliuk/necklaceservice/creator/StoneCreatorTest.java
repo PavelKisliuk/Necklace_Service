@@ -11,11 +11,11 @@ public class StoneCreatorTest {
 
 	@Test
 	public void testCreate() {
-		Stone stone = new Stone();
-		stone.setName("Emerald");
-		stone.setStoneId("Emerald00001");
-		stone.setWeight(100);
-		stone.setCost(BigDecimal.valueOf(500.0));
-		assertEquals(stone, new StoneCreator().create("Emerald-Emerald00001-100-500.0".split("-")));
+		Stone expected = new Stone();
+		expected.setName("Emerald");
+		expected.setStoneId("Emerald00001");
+		expected.setWeight(100);
+		expected.setCost(BigDecimal.valueOf(500.0));
+		assertEquals(new StoneCreator().create("Emerald-Emerald00001-100-500.0".split("-")), expected);
 	}
 }

@@ -28,13 +28,13 @@ public class NecklaceFileReaderTest {
 
 	@Test
 	public void testRead() throws CustomException {
-		List<String> necklaceList = new ArrayList<>();
-		necklaceList.add("necklace00001");
-		necklaceList.add("&canvas00001-150-200-ALBUM_AURUM");
-		necklaceList.add("#Emerald-Emerald00001-100-500-MEDIUM-HARD-0.6");
-		necklaceList.add("&3080");
-		necklaceList.add(">");
+		List<String> expected = new ArrayList<>();
+		expected.add("necklace00001");
+		expected.add("&canvas00001-150-200-ALBUM_AURUM");
+		expected.add("#Emerald-Emerald00001-100-500-MEDIUM-HARD-0.6");
+		expected.add("&3080");
+		expected.add(">");
 
-		assertEquals(necklaceList, necklaceFileReader.read("testfile/Filetest.txt"));
+		assertEquals(necklaceFileReader.read("testfile/Filetest.txt"), expected);
 	}
 }

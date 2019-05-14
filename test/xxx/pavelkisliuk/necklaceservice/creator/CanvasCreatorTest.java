@@ -11,11 +11,11 @@ public class CanvasCreatorTest {
 
 	@Test
 	public void testCreate() {
-		Canvas canvas = new Canvas();
-		canvas.setCanvasId("canvas00001");
-		canvas.setWeight(150);
-		canvas.setCost(BigDecimal.valueOf(200.0));
-		canvas.setMetalType(Canvas.MetalType.ALBUM_AURUM);
-		assertEquals(canvas, new CanvasCreator().create("canvas00001-150-200-ALBUM_AURUM".split("-")));
+		Canvas expected = new Canvas();
+		expected.setCanvasId("canvas00001");
+		expected.setWeight(150);
+		expected.setCost(BigDecimal.valueOf(200.0));
+		expected.setMetalType(Canvas.MetalType.ALBUM_AURUM);
+		assertEquals(new CanvasCreator().create("canvas00001-150-200-ALBUM_AURUM".split("-")), expected);
 	}
 }

@@ -14,7 +14,7 @@ public class NecklaceCreatorTest {
 
 	@Test
 	public void testCreate() {
-		Necklace necklace = new Necklace();
+		Necklace expected = new Necklace();
 		NecklaceElement necklaceElement = new NecklaceElement();
 		Canvas canvas = new Canvas();
 		canvas.setCanvasId("canvas00001");
@@ -31,12 +31,12 @@ public class NecklaceCreatorTest {
 		stone.setOpacity(0.6);
 		necklaceElement.setCanvas(canvas);
 		necklaceElement.getStonesGroup().add(stone);
-		necklace.setNecklaceId("necklace00001");
-		necklace.getNecklaceElementsList().add(necklaceElement);
-		necklace.setCost(BigDecimal.valueOf(3080.0));
+		expected.setNecklaceId("necklace00001");
+		expected.getNecklaceElementsList().add(necklaceElement);
+		expected.setCost(BigDecimal.valueOf(3080.0));
 
-		assertEquals(necklace, new NecklaceCreator().create(
+		assertEquals(new NecklaceCreator().create(
 				"necklace00001&canvas00001-150-200-ALBUM_AURUM#Emerald-Emerald00001-100-500-MEDIUM-HARD-0.6&3080".
-						split("&")));
+						split("&")), expected);
 	}
 }

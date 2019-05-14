@@ -11,15 +11,15 @@ public class GemstoneCreatorTest {
 
 	@Test
 	public void testCreate() {
-		Gemstone stone = new Gemstone();
-		stone.setName("Emerald");
-		stone.setStoneId("Emerald00001");
-		stone.setWeight(100);
-		stone.setCost(BigDecimal.valueOf(500.0));
-		stone.setCuriosityLevelType(Gemstone.CuriosityLevelType.MEDIUM);
-		stone.setHardnessLevelType(Gemstone.HardnessLevelType.HARD);
-		stone.setOpacity(0.6);
-		assertEquals(stone, new GemstoneCreator().create(
-				"Emerald-Emerald00001-100-500-MEDIUM-HARD-0.6".split("-")));
+		Gemstone expected = new Gemstone();
+		expected.setName("Emerald");
+		expected.setStoneId("Emerald00001");
+		expected.setWeight(100);
+		expected.setCost(BigDecimal.valueOf(500.0));
+		expected.setCuriosityLevelType(Gemstone.CuriosityLevelType.MEDIUM);
+		expected.setHardnessLevelType(Gemstone.HardnessLevelType.HARD);
+		expected.setOpacity(0.6);
+		assertEquals(new GemstoneCreator().create("Emerald-Emerald00001-100-500-MEDIUM-HARD-0.6".split("-")),
+				expected);
 	}
 }

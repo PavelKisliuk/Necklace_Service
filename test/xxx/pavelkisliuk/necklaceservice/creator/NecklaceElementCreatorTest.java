@@ -13,7 +13,7 @@ public class NecklaceElementCreatorTest {
 
 	@Test
 	public void testCreate() {
-		NecklaceElement necklaceElement = new NecklaceElement();
+		NecklaceElement expected = new NecklaceElement();
 		Canvas canvas = new Canvas();
 		canvas.setCanvasId("canvas00001");
 		canvas.setWeight(150);
@@ -27,9 +27,10 @@ public class NecklaceElementCreatorTest {
 		stone.setCuriosityLevelType(Gemstone.CuriosityLevelType.MEDIUM);
 		stone.setHardnessLevelType(Gemstone.HardnessLevelType.HARD);
 		stone.setOpacity(0.6);
-		necklaceElement.setCanvas(canvas);
-		necklaceElement.getStonesGroup().add(stone);
-		assertEquals(necklaceElement, new NecklaceElementCreator().create(
-				"canvas00001-150-200.0-ALBUM_AURUM#Emerald-Emerald00001-100-500.0-MEDIUM-HARD-0.6".split("#")));
+		expected.setCanvas(canvas);
+		expected.getStonesGroup().add(stone);
+		assertEquals(new NecklaceElementCreator().create(
+				"canvas00001-150-200.0-ALBUM_AURUM#Emerald-Emerald00001-100-500.0-MEDIUM-HARD-0.6".split("#")),
+				expected);
 	}
 }
